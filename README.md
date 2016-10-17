@@ -1,2 +1,12 @@
 # JARVIS
 JARVIS is a Multi-purpose Bot for Discord.
+Created By jcool.friedman
+
+##Commands
+	jarvis help             Sends the user a list of available commands.\n
+	jarvis ping             Pong!\n
+	jarvis troll <user>     Trolls the @mentioned user\n
+	jarvis stop             Disconnects JARVIS from all voice connections
+	
+##Support
+<a href="https://discord.gg/8P2UZW3" class="button is-medium is-success">Official Server</a>
