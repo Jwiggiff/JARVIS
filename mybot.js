@@ -60,7 +60,7 @@ bot.on("message", msg => {
       console.log('Disconnected!');
     }
 
-    if (msg.content.startsWith(prefix + "(╯°□°）╯︵ ┻━┻")) {
+    if (msg.content.startsWith("(╯°□°）╯︵ ┻━┻")) {
       msg.channel.sendMessage("┬─┬﻿ ノ( ゜-゜ノ)");
     }
 });
