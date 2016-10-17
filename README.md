@@ -4,9 +4,9 @@ Created By jcool.friedman
 <a href="http://imgur.com/4rKMqES"><img src="http://i.imgur.com/4rKMqES.png" title="source: imgur.com" /></a>
 
 ##Commands
-	jarvis help             Sends the user a list of available commands.\n
-	jarvis ping             Pong!\n
-	jarvis troll <user>     Trolls the @mentioned user\n
+	jarvis help             Sends the user a list of available commands.
+	jarvis ping             Pong!
+	jarvis troll <user>     Trolls the @mentioned user
 	jarvis stop             Disconnects JARVIS from all voice connections
 	
 ##Support
