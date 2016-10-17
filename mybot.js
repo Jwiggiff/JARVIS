@@ -24,6 +24,10 @@ bot.on("message", msg => {
       msg.channel.sendMessage("Pong!");
     }
 
+if (msg.content.startsWith(prefix + "(╯°□°）╯︵ ┻━┻") {
+  msg.content.startsWith("┬─┬﻿ ノ( ゜-゜ノ)");
+}
+
     if (msg.content.startsWith(prefix + "troll")) {
       let victim1 = msg.mentions.users.first();
       let victim = msg.guild.member(victim1);
