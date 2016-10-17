@@ -1,6 +1,6 @@
 var Discord = require("discord.js");
 var bot = new Discord.Client();
-var fs = require("fs");
+var request = require("./token.js");
 
 bot.on('warn', (m) => console.log('[warn]', m));
 bot.on('debug', (m) => console.log('[debug]', m));
@@ -66,4 +66,3 @@ bot.on('ready', () => {
   bot.user.setStatus("online", "JARVIS | jarvis help");
 });
 
-bot.login("MjM2OTQ5NDQ2MDkxNDcyODk2.CuQj7g.lXevzDDQEMOG2BFnY6AoHZH76xw");
