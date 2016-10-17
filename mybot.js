@@ -28,8 +28,9 @@ bot.on("message", msg => {
       let victim1 = msg.mentions.users.first();
       let victim = msg.guild.member(victim1);
       if (!victim.voiceChannel) {
-        msg.channel.sendMessage('Error: It didn\'t work!\nThe vicitm needs to be connected to a voice channel, Silly Billy! :stuck_out_tongue_winking_eye:');
-      else
+        msg.channel.sendMessage('Error: It didn\'t work!\nThe vicitm needs to be connected to a voice channel, Silly Billy! :stuck_out_tongue_winking_eye:')
+        .catch(console.log);
+      } else {
         console.log('trolling ' + victim1)
         var trolls = {
           0 : "./lib/Sounds/Air Horn.mp3",
