@@ -66,3 +66,4 @@ bot.on('ready', () => {
   bot.user.setStatus("online", "JARVIS | jarvis help");
 });
 
+bot.login(request.token);
