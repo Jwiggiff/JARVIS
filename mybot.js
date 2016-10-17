@@ -64,10 +64,6 @@ bot.on("message", msg => {
       msg.guild.voiceConnection.disconnect()
       console.log('Disconnected!');
     }
-
-    if (msg.content.startsWith("/tableflip")) {
-      msg.channel.sendMessage("/unflip");
-    }
 });
 
 bot.on('ready', () => {
