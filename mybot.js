@@ -27,32 +27,36 @@ bot.on("message", msg => {
     if (msg.content.startsWith(prefix + "troll")) {
       let victim1 = msg.mentions.users.first();
       let victim = msg.guild.member(victim1);
-      console.log('trolling ' + victim)
-      var trolls = {
-        0 : "./lib/Sounds/Air Horn.mp3",
-        1 : "./lib/Sounds/Rick Roll.mp3",
-        2 : "./lib/Sounds/Pokemon Go.mp3",
-        3 : "./lib/Sounds/Sandstorm.mp3"
-      };
-      var randomTroll = trolls[Math.floor(Math.random() * (3 - 0 + 1) + 0)];
-      var voiceChannel = victim.voiceChannel;
-      voiceChannel.join()
-      .then(connection => {
-        console.log('Connected!');
-        const dispatcher = connection.playFile(randomTroll)
-      })
-      .catch(console.log);
+      if (!victim.voiceChannel) {
+        msg.channel.sendMessage('Error: It didn\'t work!\nThe vicitm needs to be connected to a voice channel, Silly Billy! :stuck_out_tongue_winking_eye:');
+      else
+        console.log('trolling ' + victim1)
+        var trolls = {
+          0 : "./lib/Sounds/Air Horn.mp3",
+          1 : "./lib/Sounds/Rick Roll.mp3",
+          2 : "./lib/Sounds/Pokemon Go.mp3",
+          3 : "./lib/Sounds/Sandstorm.mp3"
+        };
+        var randomTroll = trolls[Math.floor(Math.random() * (3 - 0 + 1) + 0)];
+        var voiceChannel = victim.voiceChannel;
+        voiceChannel.join()
+        .then(connection => {
+          console.log('Connected!');
+          const dispatcher = connection.playFile(randomTroll)
+        })
+        .catch(console.log);
 
-      var texts = {
-        0 : "Duuuude That was so Kappa!",
-        1 : "LOL",
-        2 : "Trololololol",
-        3 : "Get trolled M8!",
-        4 : "You Just Got Trolled!",
-        5 : "Reeeeeeeeeemed!"
+        var texts = {
+          0 : "Duuuude That was so Kappa!",
+          1 : "LOL",
+          2 : "Trololololol",
+          3 : "Get trolled M8!",
+          4 : "You Just Got Trolled!",
+          5 : "Reeeeeeeeeemed!"
+        }
+        var randomText = texts[Math.floor(Math.random() * (5 - 0 + 1) + 0)];
+        msg.channel.sendMessage(randomText);
       }
-      var randomText = texts[Math.floor(Math.random() * (5 - 0 + 1) + 0)];
-      msg.channel.sendMessage(randomText);
     }
 
     if (msg.content.startsWith(prefix + "stop")) {
