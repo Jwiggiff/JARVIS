@@ -65,8 +65,8 @@ bot.on("message", msg => {
       console.log('Disconnected!');
     }
 
-    if (msg.content.startsWith("(╯°□°）╯︵ ┻━┻")) {
-      msg.channel.sendMessage("┬─┬﻿ ノ( ゜-゜ノ)");
+    if (msg.content.startsWith("/tableflip")) {
+      msg.channel.sendMessage("/unflip");
     }
 });
 
