@@ -27,6 +27,7 @@ bot.on("message", msg => {
   if (msg.content.startsWith(prefix + "(╯°□°）╯︵ ┻━┻")) {
     msg.channel.sendMessage("┬─┬﻿ ノ( ゜-゜ノ)");
   }
+});
 
 bot.on('ready', () => {
   console.log('I am ready!');
