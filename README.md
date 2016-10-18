@@ -9,5 +9,5 @@ Created By jcool.friedman
 	jarvis troll <user>     Trolls the @mentioned user
 	jarvis stop             Disconnects JARVIS from all voice connections
 	
-##Support
+##Support & Suggestions
 <a href="https://discord.gg/8P2UZW3" class="button is-medium is-success">Official Server</a>
