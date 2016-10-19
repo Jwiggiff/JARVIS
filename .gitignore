@@ -36,5 +36,11 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-# Discord Token
+#config files
+auth.json
+rss.json
+alias.json
+permissions.json
+messagebox.json
+config.json
 token.js
