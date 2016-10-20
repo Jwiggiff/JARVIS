@@ -124,6 +124,9 @@ var meme = {
 	"awkwardpenguin": 61584
 };
 
+var poll = []
+var ActivePoll = false
+
 bot.on('warn', (m) => console.log('[warn]', m));
 bot.on('debug', (m) => console.log('[debug]', m));
 
@@ -441,7 +444,65 @@ var commands = {
       }
       msg.channel.sendMessage("**Uptime**: " + timestr);
     }
-  }
+  },
+	"startpoll": {
+			usage: "[choice a], [choice b], [choice c]",
+			description: "starts a poll.",
+			process: function(bot,msg,suffix){
+				if (ActivePoll) {
+					msg.channel.sendMessage('Sorry, There is already an active poll!');
+				} else {
+					ActivePoll = true
+					info = ''
+					test1 = ''
+					opts = suffix.split(',');
+					for (var i = 0; i < opts.length; i++) {
+						poll[opts[i]] = 0
+					}
+					for (var i in poll) {
+						info += i + ' - ' + poll[i] + ' votes\n'
+					}
+					msg.channel.sendMessage('Poll Successfully Created!\n```\n' + info + '```');
+					console.log(info);
+				}
+			}
+	},
+	"viewpoll": {
+			description: "view poll.",
+			process: function(bot,msg,suffix){
+				if (!ActivePoll) {msg.channel.sendMessage('There is no active poll!')}
+				else {msg.channel.sendMessage('Current stats are:\n```\n' + info + '```');}
+			}
+	},
+	"endpoll": {
+			description: "ends poll.",
+			process: function(bot,msg,suffix){
+				if (!ActivePoll) {
+					msg.channel.sendMessage('There is no poll to end!');
+				} else {
+					msg.channel.sendMessage('The final results are:\n```\n' + info + '```');
+					info = ''
+					poll = ''
+					ActivePoll = false
+				}
+			}
+	},
+	"vote": {
+			usage: "[name of option]",
+			description: "vote in a poll.",
+			process: function(bot,msg,suffix){
+				if (!ActivePoll) {
+					msg.channel.sendMessage('There is no active poll.');
+				} else {
+					poll[suffix] += 1
+					info = ''
+					for (var i in poll) {
+						info += i + ' - ' + poll[i] + ' votes\n'
+					}
+					msg.channel.sendMessage('voted for' + suffix);
+				}
+			}
+	}
 }
 
 
