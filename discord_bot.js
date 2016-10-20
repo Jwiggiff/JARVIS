@@ -15,6 +15,10 @@ try {
 	console.log("couldn't load leet plugin!\n"+e.stack);
 }
 
+if (msg.content.startsWith("(╯°□°）╯︵ ┻━┻")) {
+  msg.content.sendMessage("┬─┬﻿ ノ( ゜-゜ノ)");
+}
+
 try {
 	var yt = require("./youtube_plugin");
 	var youtube_plugin = new yt();
@@ -162,11 +166,11 @@ var commands = {
         .catch(console.log);
 
         var texts = {
-          0 : "Duuuude That was so Kappa!",
+          0 : "HA NERD!",
           1 : "LOL",
           2 : "Trololololol",
           3 : "Get trolled M8!",
-          4 : "You Just Got Trolled!",
+          4 : "Sh*t boi waddup!",
           5 : "Reeeeeeeeeemed!"
         }
         var randomText = texts[Math.floor(Math.random() * (5 - 0 + 1) + 0)];
