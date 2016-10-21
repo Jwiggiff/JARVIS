@@ -162,11 +162,11 @@ var commands = {
         .catch(console.log);
 
         var texts = {
-          0 : "Duuuude That was so Kappa!",
+          0 : "HA NERD!",
           1 : "LOL",
           2 : "Trololololol",
           3 : "Get trolled M8!",
-          4 : "You Just Got Trolled!",
+          4 : "O Sh*t boi waddup!",
           5 : "Reeeeeeeeeemed!"
         }
         var randomText = texts[Math.floor(Math.random() * (5 - 0 + 1) + 0)];
@@ -447,6 +447,9 @@ var commands = {
 
 function checkMessageForCommand(msg, isEdit) {
 	//check if message is a command
+	if (msg.content.startsWith("(╯°□°）╯︵ ┻━┻")) {
+	 (msg.channel.sendMessage("┬─┬﻿ ノ( ゜-゜ノ)"));
+}
 	if(msg.author.id != bot.user.id && (msg.content.startsWith(Config.commandPrefix))){
         console.log("treating " + msg.content + " from " + msg.author.username + "\(" + msg.author + "\) as command");
 		var cmdTxt = msg.content.split(" ")[1];
