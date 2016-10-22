@@ -124,10 +124,12 @@ var meme = {
 	"awkwardpenguin": 61584
 };
 
+var poll = []
+var ActivePoll = false
+
 bot.on('warn', (m) => console.log('[warn]', m));
 bot.on('debug', (m) => console.log('[debug]', m));
 
-//var commands = "help          Displays All Available Commands\nping          Pong!\ntroll         Trolls the @mentioned User!\nstop          Disconnects JARVIS from all voice connections"
 var commands = {
   "ping": {
     description: "Pong!",
@@ -441,7 +443,93 @@ var commands = {
       }
       msg.channel.sendMessage("**Uptime**: " + timestr);
     }
-  }
+  },
+	"startpoll": {
+			usage: "[choice a], [choice b], [choice c]",
+			description: "starts a poll.",
+			process: function(bot,msg,suffix){
+				if (ActivePoll) {
+					msg.channel.sendMessage('Sorry, There is already an active poll!');
+				} else {
+					ActivePoll = true
+					info = ''
+					test1 = ''
+					opts = suffix.split(',');
+					for (var i = 0; i < opts.length; i++) {
+						poll[opts[i]] = 0
+					}
+					for (var i in poll) {
+						info += i + ' - ' + poll[i] + ' votes\n'
+					}
+					msg.channel.sendMessage('Poll Successfully Created!\n```\n' + info + '```');
+					console.log(info);
+				}
+			}
+	},
+	"viewpoll": {
+			description: "view poll.",
+			process: function(bot,msg,suffix){
+				if (!ActivePoll) {msg.channel.sendMessage('There is no active poll!')}
+				else {msg.channel.sendMessage('Current stats are:\n```\n' + info + '```');}
+			}
+	},
+	"endpoll": {
+			description: "ends poll.",
+			process: function(bot,msg,suffix){
+				if (!ActivePoll) {
+					msg.channel.sendMessage('There is no poll to end!');
+				} else {
+					msg.channel.sendMessage('The final results are:\n```\n' + info + '```');
+					info = ''
+					poll = ''
+					ActivePoll = false
+				}
+			}
+	},
+	"vote": {
+			usage: "[name of option]",
+			description: "vote in a poll.",
+			process: function(bot,msg,suffix){
+				if (!ActivePoll) {
+					msg.channel.sendMessage('There is no active poll.');
+				} else {
+					poll[suffix] += 1
+					info = ''
+					for (var i in poll) {
+						info += i + ' - ' + poll[i] + ' votes\n'
+					}
+					msg.channel.sendMessage('voted for' + suffix);
+				}
+			}
+	},
+	"yesno": {
+			description: "say yes or no.",
+			process: function(bot,msg,suffix){
+				var yesno = Math.floor(Math.random() * (2 - 1 + 1) + 0);
+				console.log(yesno);
+				if (yesno == 1) {
+					var tags = [ '', 'yes' ];
+	        get_gif(tags, function(id) {
+	      		if (typeof id !== "undefined") {
+	          	msg.channel.sendMessage( "http://media.giphy.com/media/" + id + "/giphy.gif [Tags: " + (tags ? tags : "Random GIF") + "]");
+	      		}
+	      		else {
+	          	msg.channel.sendMessage( "Invalid tags, try something different. [Tags: " + (tags ? tags : "Random GIF") + "]");
+	      		}
+	        });
+				} else {
+					var tags = [ '', 'no' ];
+	        get_gif(tags, function(id) {
+	      if (typeof id !== "undefined") {
+	          msg.channel.sendMessage( "http://media.giphy.com/media/" + id + "/giphy.gif [Tags: " + (tags ? tags : "Random GIF") + "]");
+	      }
+	      else {
+	          msg.channel.sendMessage( "Invalid tags, try something different. [Tags: " + (tags ? tags : "Random GIF") + "]");
+	      }
+	        });
+				}
+			}
+	},
 }
 
 
@@ -450,11 +538,11 @@ function checkMessageForCommand(msg, isEdit) {
 	if(msg.author.id != bot.user.id && (msg.content.startsWith(Config.commandPrefix))){
         console.log("treating " + msg.content + " from " + msg.author.username + "\(" + msg.author + "\) as command");
 		var cmdTxt = msg.content.split(" ")[1];
-        var suffix = msg.content.substring(cmdTxt.length+7);//add one for the ! and one for the space
+        var suffix = msg.content.substring(cmdTxt.length+7);//add six for the 'jarvis' and one for the space
         if(msg.isMentioned(bot.user)){
 			try {
 				cmdTxt = msg.content.split(" ")[1];
-				suffix = msg.content.substring(bot.user.mention().length+cmdTxt.length+2);
+				suffix = msg.content.substring(bot.user.mention().length+cmdTxt.length+7);
 			} catch(e){ //no command
 				msg.channel.sendMessage("Yes?");
 				return;
@@ -548,66 +636,6 @@ function checkMessageForCommand(msg, isEdit) {
 }
 
 bot.on("message", msg => checkMessageForCommand(msg, false));
-//bot.on("message", message => {
-//
-//  let prefix = "jarvis ";
-//
-//  let msg = message.content.toLowerCase();
-//
-//  if(!msg.startsWith(prefix)) return;
-//  if(message.author.bot) return;
-//  var User = msg.author
-//    if (msg.startsWith(prefix + "help")) {
-//        message.channel.sendMessage("I sent a list of commands to you, " + User + "!");
-//        var helpMessage = '**These are the available commands for JARVIS(all Commands must start with "jarvis "):**\n\n`' + commands + '`\n\nThank You For Using JARVIS.\nBy Jcool.Friedman'
-//        User.sendFile('./lib/Images/jarvis icon1.png', '', helpMessage);
-//    }
-//
-//    if (msg.startsWith(prefix + "ping")) {
-//      message.channel.sendMessage("Pong!");
-//    }
-//
-//    if (msg.startsWith(prefix + "troll")) {
-//      let victim1 = msg.mentions.users.first();
-//      let victim = msg.guild.member(victim1);
-//      if (!victim.voiceChannel) {
-//        message.channel.sendMessage('Error: It didn\'t work!\nThe vicitm needs to be connected to a voice channel, Silly Billy! :stuck_out_tongue_winking_eye:')
-//        .catch(console.log);
-//      } else {
-//        console.log('trolling ' + victim1)
-//        var trolls = {
-//          0 : "./lib/Sounds/Air Horn.mp3",
-//          1 : "./lib/Sounds/Rick Roll.mp3",
-//          2 : "./lib/Sounds/Pokemon Go.mp3",
-//          3 : "./lib/Sounds/Sandstorm.mp3"
-//        };
-//        var randomTroll = trolls[Math.floor(Math.random() * (3 - 0 + 1) + 0)];
-//        var voiceChannel = victim.voiceChannel;
-//        voiceChannel.join()
-//        .then(connection => {
-//          console.log('Connected!');
-//          const dispatcher = connection.playFile(randomTroll)
-//        })
-//        .catch(console.log);
-//
-//        var texts = {
-//          0 : "Duuuude That was so Kappa!",
-//          1 : "LOL",
-//          2 : "Trololololol",
-//          3 : "Get trolled M8!",
-//          4 : "You Just Got Trolled!",
-//          5 : "Reeeeeeeeeemed!"
-//        }
-//        var randomText = texts[Math.floor(Math.random() * (5 - 0 + 1) + 0)];
-//        message.channel.sendMessage(randomText);
-//      }
-//    }
-//
-//    if (msg.startsWith(prefix + "stop")) {
-//      msg.guild.voiceConnection.disconnect()
-//      console.log('Disconnected!');
-//    }
-//});
 
 bot.on("presence", function(user,status,gameId) {
 	//if(status === "online"){
@@ -675,7 +703,8 @@ exports.commandCount = function(){
 }
 
 bot.on('ready', () => {
-  console.log("Logged in! Serving in " + bot.guilds.array().length + " servers");
+	package = require('./package.json');
+  console.log("Starting " + package.name + " " + package.version + "...\nLogged in! Serving in " + bot.guilds.array().length + " servers");
   require("./plugins.js").init();
   console.log("type "+Config.commandPrefix+"help in Discord for a commands list.");
   bot.user.setStatus("online", "JARVIS | jarvis help");

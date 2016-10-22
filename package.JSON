@@ -1,11 +1,11 @@
 
 {
   "name": "JARVIS",
-  "version": "1.0.2",
+  "version": "v3",
   "description": "A Multi-purpose Discord Bot. Currently under major development.",
   "readme": "README.md",
   "maintainers": [],
-  "author": "",
+  "author": "jcool.friedman",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jwiggiff/JARVIS.git"
