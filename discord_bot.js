@@ -450,6 +450,7 @@ function checkMessageForCommand(msg, isEdit) {
 	if (msg.content.startsWith("(╯°□°）╯︵ ┻━┻")) {
 	 (msg.channel.sendMessage("┬─┬﻿ ノ( ゜-゜ノ)"));
 }
+//this is the table flip command
 	if(msg.author.id != bot.user.id && (msg.content.startsWith(Config.commandPrefix))){
         console.log("treating " + msg.content + " from " + msg.author.username + "\(" + msg.author + "\) as command");
 		var cmdTxt = msg.content.split(" ")[1];
