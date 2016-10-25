@@ -710,6 +710,15 @@ bot.on('ready', () => {
   require("./plugins.js").init();
   console.log("type "+Config.commandPrefix+"help in Discord for a commands list.");
   bot.user.setStatus("online", "JARVIS | jarvis help");
+
+	superagent
+	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
+	.send({"server_count": bot.guilds.array().length})
+	.set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxNzQyOTE1NTg0NDk4MDczNjEiLCJyYW5kIjoyMTYsImlhdCI6MTQ3NjY1MDY2NX0.z3krQHAXxpFdinKEiD5sZWed50U6ZEyz8DWMIhLLUEg')
+	.end(function(err, res){
+		if(err) {console.log('There was a problem sending server count to bots.discord.pw!\n' + err)}
+		if(res) {console.log('server count successfully sent to bots.discord.pw!')}
+	});
 });
 
 bot.login(token.token);
