@@ -2,6 +2,7 @@ var Discord = require("discord.js");
 var bot = new Discord.Client();
 var token = require('./token.js');
 var fs = require('fs');
+var superagent = require('superagent');
 
 try {
 	var urban = require("urban");
@@ -130,6 +131,9 @@ var meme = {
 
 var poll = []
 var ActivePoll = false
+
+var antibully = true
+var bullyWords = ["fuck you", "you are a bitch"]
 
 bot.on('warn', (m) => console.log('[warn]', m));
 bot.on('debug', (m) => console.log('[debug]', m));
@@ -513,31 +517,15 @@ var commands = {
 	"yesno": {
 			description: "say yes or no.",
 			process: function(bot,msg,suffix){
-				var yesno = Math.floor(Math.random() * (2 - 1 + 1) + 0);
-				console.log(yesno);
-				if (yesno == 1) {
-					var tags = [ '', 'yes' ];
-	        get_gif(tags, function(id) {
-	      		if (typeof id !== "undefined") {
-	          	msg.channel.sendMessage( "http://media.giphy.com/media/" + id + "/giphy.gif [Tags: " + (tags ? tags : "Random GIF") + "]");
-	      		}
-	      		else {
-	          	msg.channel.sendMessage( "Invalid tags, try something different. [Tags: " + (tags ? tags : "Random GIF") + "]");
-	      		}
-	        });
-				} else {
-					var tags = [ '', 'no' ];
-	        get_gif(tags, function(id) {
-	      if (typeof id !== "undefined") {
-	          msg.channel.sendMessage( "http://media.giphy.com/media/" + id + "/giphy.gif [Tags: " + (tags ? tags : "Random GIF") + "]");
-	      }
-	      else {
-	          msg.channel.sendMessage( "Invalid tags, try something different. [Tags: " + (tags ? tags : "Random GIF") + "]");
-	      }
-	        });
-				}
+				superagent
+				.get('https://yesno.wtf/api')
+				.end(function(err, res){
+					if (err) {console.log(err)};
+					if (res) {msg.channel.sendMessage(res.body.image)};
+				});
 			}
 	},
+<<<<<<< HEAD
 	"google"
 	usage: ""
 	description: "search on google"
@@ -587,8 +575,25 @@ module.exports = {
   help: 'Search billions of web pages',
   catagory: 'general'
 };
+=======
+	//sneak peak for what were working on!
+	//"antibully": {
+	//		usage: "<on/off>",
+	//		description: "say no to bullying!",
+	//		process: function(bot,msg,suffix){
+	//			if (suffix == "on") {
+	//				antibully = true
+	//			}
+	//			else if (suffix == "off") {
+	//				antibully = false
+	//			}
+	//			else {
+	//				msg.channel.sendMessage('Invalid Argument!');
+	//			}
+	//		}
+	//},
+>>>>>>> refs/remotes/origin/master
 }
-
 
 function checkMessageForCommand(msg, isEdit) {
 	//check if message is a command
@@ -769,6 +774,15 @@ bot.on('ready', () => {
   require("./plugins.js").init();
   console.log("type "+Config.commandPrefix+"help in Discord for a commands list.");
   bot.user.setStatus("online", "JARVIS | jarvis help");
+
+	superagent
+	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
+	.send({"server_count": bot.guilds.array().length})
+	.set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxNzQyOTE1NTg0NDk4MDczNjEiLCJyYW5kIjoyMTYsImlhdCI6MTQ3NjY1MDY2NX0.z3krQHAXxpFdinKEiD5sZWed50U6ZEyz8DWMIhLLUEg')
+	.end(function(err, res){
+		if(err) {console.log('There was a problem sending server count to bots.discord.pw!\n' + err)}
+		if(res) {console.log('server count successfully sent to bots.discord.pw!')}
+	});
 });
 
 bot.login(token.token);
