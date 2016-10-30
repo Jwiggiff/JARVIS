@@ -709,7 +709,8 @@ bot.on('ready', () => {
   console.log("Starting " + package.name + " " + package.version + "...\nLogged in! Serving in " + bot.guilds.array().length + " servers");
   require("./plugins.js").init();
   console.log("type "+Config.commandPrefix+"help in Discord for a commands list.");
-  bot.user.setStatus("online", "JARVIS | jarvis help");
+  bot.user.setStatus("online");
+	bot.user.setGame("JARVIS | jarvis help");
 
 	superagent
 	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
