@@ -100,7 +100,7 @@ function navTab(name) {
 }
 $(window).resize(reloadSlider);
 $(document).ready(function() {
-  console.log('updated!');
+  console.log('updated! bro1');
   var state = Navigate.getState();
   var path = window.location.pathname;
   var page = path.split("/")[1];
