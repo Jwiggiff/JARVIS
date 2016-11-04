@@ -56,7 +56,7 @@ function setCurrentTab(tab, pushState, replaceState) {
   tabName = currentTab.attr("id").substring(4);
   var state = Navigate.getState();
   state.page = tabName;
-  if(tabName=='home') state.path = "/JARVIS";
+  if(tabName=='home') state.path = "/JARVIS/";
   else state.path = "/JARVIS/" + tabName;
   state.hash = "";
   if (pushState) Navigate.updateState(state, replaceState);
