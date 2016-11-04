@@ -109,7 +109,7 @@ $(document).ready(function() {
   var replaceState = false;
   var pageExists = !!getTab(page);
   console.log(pageExists);
-  console.log(!!getTab(page));
+  console.log(getTab(page));
   if (page && pageExists) page = page.toLowerCase();
   else page = DEFAULT_TAB;
   if (!pageExists) replaceState = true;
