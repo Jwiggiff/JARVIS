@@ -54,10 +54,10 @@ function fetchTab(tabName, page) {
 
 function setCurrentTab(tab, pushState, replaceState) {
   tabName = currentTab.attr("id").substring(4);
-  console.log(tabName);
   var state = Navigate.getState();
   state.page = tabName;
-  state.path = "/" + tabName;
+  if(tabName=='home') state.path = "/JARVIS";
+  else state.path = "/JARVIS/" + tabName;
   state.hash = "";
   if (pushState) Navigate.updateState(state, replaceState);
   var tab = fetchTab(tabName, currentTab.data("page"));
@@ -102,9 +102,7 @@ $(window).resize(reloadSlider);
 $(document).ready(function() {
   var state = Navigate.getState();
   var path = window.location.pathname;
-  console.log(path); //logx
   var page = path.split("/")[1];
-  console.log(page); //logx
   var hash = window.location.hash.substring(1);
   var replaceState = false;
   var pageExists = !!getTab(page);
