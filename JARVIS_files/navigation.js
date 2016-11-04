@@ -39,7 +39,6 @@ function animateSlider(position, width) {
 }
 
 function getTab(tabName) {
-  console.log(tabName.toLowerCase());
   var tab = $("#tab-" + tabName.toLowerCase());
   return (tab.length > 0 ? tab : undefined);
 }
@@ -109,6 +108,8 @@ $(document).ready(function() {
   var hash = window.location.hash.substring(1);
   var replaceState = false;
   var pageExists = !!getTab(page);
+  console.log(pageExists);
+  console.log(!!getTab(page));
   if (page && pageExists) page = page.toLowerCase();
   else page = DEFAULT_TAB;
   if (!pageExists) replaceState = true;
