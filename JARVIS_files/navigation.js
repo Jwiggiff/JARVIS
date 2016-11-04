@@ -54,6 +54,7 @@ function fetchTab(tabName, page) {
 
 function setCurrentTab(tab, pushState, replaceState) {
   tabName = currentTab.attr("id").substring(4);
+  console.log(tabName);
   var state = Navigate.getState();
   state.page = tabName;
   state.path = "/" + tabName;
@@ -75,7 +76,6 @@ function setCurrentTab(tab, pushState, replaceState) {
 }
 
 function loadTab(tab, pushState) {
-  console.log(tab); //logx
   if (tab.get(0) === currentTab.get(0)) return;
   currentTab.removeClass("current-tab");
   currentTab = tab;
@@ -108,8 +108,6 @@ $(document).ready(function() {
   var hash = window.location.hash.substring(1);
   var replaceState = false;
   var pageExists = !!getTab(page);
-  console.log(pageExists);
-  console.log(getTab(page));
   if (page && pageExists) page = page.toLowerCase();
   else page = DEFAULT_TAB;
   if (!pageExists) replaceState = true;
