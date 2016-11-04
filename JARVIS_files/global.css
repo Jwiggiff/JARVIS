@@ -9,7 +9,7 @@ body {
 }
 h1 {
   font-weight: 400;
-  color: #00cc99;
+  color: #0047ab;
   margin-top: 16px;
   margin-bottom: 16px;
 }
@@ -27,16 +27,16 @@ p {
 a {
   text-transform: uppercase;
   text-decoration: none;
-  color: #00ffbf;
+  color: #0047ab;
   transition: color 500ms;
 }
 a:hover {
-  color: #00cc99;
+  color: #003278;
 }
 .nav-container {
   width: 100%;
   height: 64px;
-  background-color: #ffffff;
+  background-color: #000000;
   box-shadow: 2px 3px 3px #cccccc;
   position: fixed;
   z-index: 2;
@@ -49,7 +49,7 @@ a:hover {
 .nav-header-title {
   font-size: 32px;
   text-transform: uppercase;
-  color: #00cc99;
+  color: #003278;
 }
 .nav-header-title:hover {
   cursor: pointer;
@@ -69,17 +69,17 @@ a:hover {
   transition: color 500ms;
 }
 .nav-tabs li:hover {
-  color: #00cc99;
+  color: #003278;
   cursor: pointer;
 }
 .current-tab {
-  color: #00cc99;
+  color: #003278;
 }
 .nav-tabs-slider {
   position: absolute;
   width: 0;
   height: 4px;
-  background-color: #00cc99;
+  background-color: #003278;
   z-index: 3;
 }
 .btn {
@@ -89,7 +89,7 @@ a:hover {
   transition: background-color 500ms, color 500ms;
 }
 .btn:hover {
-  color: #00cc99;
+  color: #003278;
   background-color: rgba(0, 204, 153, 0.05);
 }
 .btn-invite {
@@ -97,7 +97,7 @@ a:hover {
   top: -4px;
   padding: 8px;
   margin: 0 16px 0 16px;
-  border-bottom: 2px solid #00cc99;
+  border-bottom: 2px solid #003278;
 }
 .page-content {
   padding: 96px 128px 32px 128px;

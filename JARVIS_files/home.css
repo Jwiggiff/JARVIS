@@ -1,7 +1,7 @@
 h4 {
   margin-top: 4px;
   margin-bottom: 4px;
-  color: #00cc99;
+  color: #003278;
   font-size: 24px;
   font-weight: 400;
 }
@@ -26,8 +26,8 @@ h4 {
 }
 .button-panel a {
   background-color: #fafafa;
-  border: 2px solid #00cc99;
-  color: #00cc99;
+  border: 2px solid #003278;
+  color: #003278;
   font-weight: 400;
   font-size: 20px;
   padding: 8px;
@@ -37,12 +37,12 @@ h4 {
   transition: background-color 500ms, color 500ms;
 }
 .button-panel a:hover {
-  background-color: #00cc99;
+  background-color: #003278;
   color: #fafafa;
   cursor: pointer;
 }
 .feature-display {
-  color: #00cc99;
+  color: #003278;
   position: absolute;
 }
 .feature-row {
@@ -64,7 +64,7 @@ h4 {
 .feature-title {
   margin-top: 4px;
   margin-bottom: 4px;
-  color: #00cc99;
+  color: #003278;
   font-size: 24px;
   font-weight: 400;
 }
@@ -76,6 +76,6 @@ h4 {
   width: 0;
   height: 2px;
   margin-top: 28px;
-  background-color: #00cc99;
+  background-color: #003278;
   border-radius: 128px;
 }
