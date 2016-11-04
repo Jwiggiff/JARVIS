@@ -48,7 +48,7 @@ function fetchTab(tabName, page) {
   if (tab.length > 0) return tab;
   tab = $("<div class='tab-content' id='tabcontent-" + tabName.toLowerCase() + "'></div>");
   tab.appendTo(contentCache);
-  tab.load("/" + page.toLowerCase() + ".html");
+  tab.load("/JARVIS/" + page.toLowerCase() + ".html");
   return tab;
 }
 
@@ -100,7 +100,7 @@ function navTab(name) {
 }
 $(window).resize(reloadSlider);
 $(document).ready(function() {
-  console.log('updated! bro1');
+  console.log('bob');
   var state = Navigate.getState();
   var path = window.location.pathname;
   var page = path.split("/")[1];
