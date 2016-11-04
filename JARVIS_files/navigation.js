@@ -48,7 +48,7 @@ function fetchTab(tabName, page) {
   if (tab.length > 0) return tab;
   tab = $("<div class='tab-content' id='tabcontent-" + tabName.toLowerCase() + "'></div>");
   tab.appendTo(contentCache);
-  tab.load("/pages/" + page.toLowerCase() + ".html");
+  tab.load("/" + page.toLowerCase() + ".html");
   return tab;
 }
 
