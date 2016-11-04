@@ -56,6 +56,7 @@ function updateServers() {
       $("#server-count").html(serverCount);
     }
   });
+/*
   $.ajax({
     'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxNzQyOTE1NTg0NDk4MDczNjEiLCJyYW5kIjoyMTYsImlhdCI6MTQ3NjY1MDY2NX0.z3krQHAXxpFdinKEiD5sZWed50U6ZEyz8DWMIhLLUEg'
   });
@@ -71,6 +72,8 @@ function updateServers() {
     $("#server-count").html(serverCount);
   });
 }
+*/
+
 $(document).ready(function() {
   featureDisplay = $("#feature-display");
   featureUnderline = $("<div class='feature-underline'></div>");
