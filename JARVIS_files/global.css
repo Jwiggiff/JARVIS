@@ -90,7 +90,7 @@ a:hover {
 }
 .btn:hover {
   color: #003278;
-  background-color: rgba(0, 204, 153, 0.05);
+  background-color: rgba(0, 50, 120, 0.05);
 }
 .btn-invite {
   position: relative;
@@ -118,6 +118,6 @@ a:hover {
   font-size: 18px;
   text-align: right;
   margin: 0 96px;
-  color: #909090;
+  color: #0047ab;
   position: relative;
 }
