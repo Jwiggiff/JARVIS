@@ -71,8 +71,9 @@ function updateServers() {
     }
     $("#server-count").html(serverCount);
   });
-}
 */
+}
+
 
 $(document).ready(function() {
   featureDisplay = $("#feature-display");
