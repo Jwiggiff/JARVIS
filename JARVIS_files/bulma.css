@@ -276,6 +276,7 @@ pre code {
 }
 
 table {
+  align: center;
   margin: 0px auto;
   width: 100%;
 }
