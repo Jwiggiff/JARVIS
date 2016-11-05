@@ -2401,8 +2401,7 @@ a.box:active {
 }
 
 .table {
-  background-color: white;
-  color: #363636;
+  color: #43c0f6;
   margin-bottom: 20px;
   width: 100%;
 }
@@ -2468,18 +2467,18 @@ a.box:active {
 }
 
 .table th {
-  color: #363636;
+  color: #43c0f6;
   text-align: left;
 }
 
 .table tr:hover {
-  background-color: whitesmoke;
+  background-color: #12b0f4;
 }
 
 .table thead td,
 .table thead th {
   border-width: 0 0 2px;
-  color: #7a7a7a;
+  color: #43c0f6;
 }
 
 .table tbody tr:last-child td,
@@ -2490,7 +2489,7 @@ a.box:active {
 .table tfoot td,
 .table tfoot th {
   border-width: 2px 0 0;
-  color: #7a7a7a;
+  color: #43c0f6;
 }
 
 .table.is-bordered td,
