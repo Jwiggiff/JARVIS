@@ -143,6 +143,7 @@ pre {
 }
 
 body {
+  margin: 0;
   color: #43c0f6;
   font-size: 1rem;
   font-weight: 400;
