@@ -115,7 +115,7 @@ $(document).ready(function() {
   state.hash = hash;
   Navigate.updateState(state, replaceState);
   pageContent = $("#page-content");
-  //contentCache = $("#content-cache");
+  contentCache = $("#content-cache");
   slider = $("#tabs-slider");
   tabs = $(".nav-tabs li");
   currentTab = getTab(page);
