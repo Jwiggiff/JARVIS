@@ -276,12 +276,13 @@ pre code {
 }
 
 table {
+  margin: 0px auto;
   width: 100%;
 }
 
 table td,
 table th {
-  text-align: center;
+  text-align: left;
   vertical-align: top;
 }
 
