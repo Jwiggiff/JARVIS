@@ -106,7 +106,7 @@ th {
 }
 
 html {
-  background-color: whitesmoke;
+  background-color: #031727;
   font-size: 14px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -143,22 +143,81 @@ pre {
 }
 
 body {
-  color: #4a4a4a;
+  color: #43c0f6;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.428571428571429;
 }
 
 a {
-  color: #00d1b2;
+  color: #43c0f6;
   cursor: pointer;
+  text-transform: uppercase;
   text-decoration: none;
-  -webkit-transition: none 86ms ease-out;
-  transition: none 86ms ease-out;
+  -webkit-transition: color 500ms;
+  transition: color 500ms;
 }
 
 a:hover {
-  color: #363636;
+  color: #12b0f4;
+}
+
+.nav-container {
+  width: 100%;
+  height: 64px;
+  background-color: #000000;
+  box-shadow: 2px 3px 3px #000000;
+  position: fixed;
+  z-index: 2;
+}
+
+.nav-header {
+  margin: 16px 32px 16px 128px;
+  padding: 0;
+  float: left;
+}
+
+.nav-header-title {
+  font-size: 32px;
+  text-transform: uppercase;
+  color: #12b0f4;
+}
+
+.nav-header-title:hover {
+  cursor: pointer;
+}
+
+.nav-tabs {
+  margin: 8px 128px 8px 32px;
+  padding: 0;
+  float: right;
+  list-style-type: none;
+}
+
+.nav-tabs li {
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 12px 8px 12px;
+  font-size: 20px;
+  text-transform: uppercase;
+  transition: color 500ms;
+}
+
+.nav-tabs li:hover {
+  color: #12b0f4;
+  cursor: pointer;
+}
+
+.current-tab {
+  color: #12b0f4;
+}
+
+.nav-tabs-slider {
+  position: absolute;
+  width: 0;
+  height: 4px;
+  background-color: #12b0f4;
+  z-index: 3;
 }
 
 code {
@@ -646,7 +705,7 @@ a.box:active {
   background-color: white;
   border: 1px solid #dbdbdb;
   border-radius: 3px;
-  color: #363636;
+  color: #43c0f6;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -673,10 +732,14 @@ a.box:active {
   padding-right: 10px;
   text-align: center;
   white-space: nowrap;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 500ms, color 500ms;
 }
 
 .button:hover {
-  border-color: #b5b5b5;
+  color: #12b0f4;
+  background-color: rgba(0, 50, 120, 0.05);
 }
 
 .button:active, .button:focus, .button.is-active {
@@ -1149,6 +1212,28 @@ a.box:active {
   position: absolute;
   top: 50%;
   position: absolute !important;
+}
+
+.button-invite {
+  position: relative;
+  top: -4px;
+  padding: 8px;
+  margin: 0 16px 0 16px;
+  border-bottom: 2px solid #12b0f4;
+}
+
+.page-content {
+  padding: 96px 128px 32px 128px;
+  display: flex;
+  min-height: calc(100% - 128px + 1px);
+}
+.tab-content {
+  width: 100%;
+  display: flex;
+}
+#content-cache {
+  opacity: 0;
+  display: none;
 }
 
 .content {
@@ -6742,8 +6827,13 @@ a.panel-block:hover {
 }
 
 .footer {
-  background-color: whitesmoke;
-  padding: 40px 20px 80px;
+  border-top: 1px solid #000000;
+  padding: 32px;
+  font-size: 18px;
+  text-align: right;
+  margin: 0 96px;
+  color: #43c0f6;
+  position: relative;
 }
 
 .footer a, .footer a:visited {
