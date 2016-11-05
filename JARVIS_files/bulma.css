@@ -2511,7 +2511,7 @@ a.box:active {
 
 .table th {
   color: #43c0f6;
-  text-align: center;
+  text-align: left;
 }
 
 .table tr:hover {
