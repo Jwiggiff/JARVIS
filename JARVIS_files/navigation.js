@@ -100,7 +100,7 @@ function navTab(name) {
 }
 $(window).resize(reloadSlider);
 $(document).ready(function() {
-  console.log('hidf');
+  console.log('asd');
   var state = Navigate.getState();
   var path = window.location.pathname;
   var page = path.split("/")[1];
@@ -115,7 +115,7 @@ $(document).ready(function() {
   state.hash = hash;
   Navigate.updateState(state, replaceState);
   pageContent = $("#page-content");
-  contentCache = $("#content-cache");
+  //contentCache = $("#content-cache");
   slider = $("#tabs-slider");
   tabs = $(".nav-tabs li");
   currentTab = getTab(page);
