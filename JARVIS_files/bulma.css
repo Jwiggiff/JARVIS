@@ -73,7 +73,6 @@ iframe {
 }
 
 table {
-  text-align: center;
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -281,7 +280,7 @@ table {
 
 table td,
 table th {
-  text-align: left;
+  text-align: center;
   vertical-align: top;
 }
 
@@ -2509,7 +2508,7 @@ a.box:active {
 
 .table th {
   color: #43c0f6;
-  text-align: left;
+  text-align: center;
 }
 
 .table tr:hover {
