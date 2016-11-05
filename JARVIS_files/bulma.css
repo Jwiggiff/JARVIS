@@ -696,6 +696,46 @@ a.box:active {
   }
 }
 
+.btn {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #43c0f6;
+  transition: background-color 500ms, color 500ms;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.btn:hover {
+  color: #12b0f4;
+  background-color: rgba(0, 50, 120, 0.05);
+}
+
+.btn-invite {
+  position: relative;
+  top: -4px;
+  padding: 8px;
+  margin: 0 16px 0 16px;
+  border-bottom: 2px solid #12b0f4;
+}
+
 .button {
   -moz-appearance: none;
   -webkit-appearance: none;
