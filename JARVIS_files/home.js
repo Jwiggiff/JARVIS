@@ -51,7 +51,7 @@ function updateServers() {
   xmlhttp.send();
 
   function myFunction(arr) {
-    var serverCount = arr.server-count;
+    var serverCount = arr."server-count";
     if (serverCount <= lastServerCount) {
       return;
     } else {
