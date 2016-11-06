@@ -52,7 +52,7 @@ function updateServers() {
 
   function myFunction(arr) {
     console.log(arr);
-      var serverCount = arr.server-count;
+      var serverCount = arr;
       if (serverCount <= lastServerCount) {
         return;
       } else {
