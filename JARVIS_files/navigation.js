@@ -124,15 +124,4 @@ $(document).ready(function() {
   tabs.click(function() {
     loadTab($(this), true);
   });
-  $.ajax({
-    url: "https://bots.discord.pw/api/bots/236949446091472896/stats",
-    headers: {
-        'Authorization':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxNzQyOTE1NTg0NDk4MDczNjEiLCJyYW5kIjoyMTYsImlhdCI6MTQ3NjY1MDY2NX0.z3krQHAXxpFdinKEiD5sZWed50U6ZEyz8DWMIhLLUEg',
-    },
-    method: 'GET',
-    dataType: 'json',
-    success: function(data){
-      console.log(data);
-    }
-  });
 });
