@@ -2,49 +2,6 @@
   <div class="commands-tab">
    <h1 class="title">Commands</h1>
    <br>
-   <div class="panel panel-primary">
-     <p class="panel-heading"> Basic Commands </p>
-     <a class="panel-block"> Announce &#60;message&#62; </a>
-     <a class="panel-block"> ggif &#60;search query&#62; </a>
-     <a class="panel-block"> Gif &#60;image tags&#62; </a>
-     <a class="panel-block"> idle &#60;status&#62; </a>
-     <a class="panel-block"> Image &#60;search query&#62; </a>
-     <a class="panel-block"> Leet &#60;message&#62; </a>
-     <a class="panel-block"> Log &#60;log message&#62; </a>
-     <a class="panel-block"> Myid </a>
-     <a class="panel-block"> Online [status] </a>
-     <a class="panel-block"> Ping </a>
-     <a class="panel-block"> Rimage &#60;search query&#62; </a>
-     <a class="panel-block"> Roll [# of sides] </a>
-     <a class="panel-block"> Say &#60;message&#62; </a>
-     <a class="panel-block"> Talk &#60;message&#62; </a>
-     <a class="panel-block"> Troll &#60;user to troll&#62; </a>
-     <a class="panel-block"> Twitch &#60;stream&#62; </a>
-     <a class="panel-block"> Uptime </a>
-     <a class="panel-block"> Urban &#60;word&#62; </a>
-     <a class="panel-block"> Userid &#60;user to get id of&#62; </a>
-     <a class="panel-block"> version </a>
-     <a class="panel-block"> Wiki &#60;search terms&#62; </a>
-     <a class="panel-block"> Yesno </a>
-     <a class="panel-block"> Youtube &#60;video tags&#62; </a>
-   </div>
-   <div class="panel panel-primary">
-     <p class="panel-heading"> Music Commands </p>
-     <a class="panel-block"> Play &#60;search terms|URL&#62; </a>
-     <a class="panel-block"> Pause </a>
-     <a class="panel-block"> Queue </a>
-     <a class="panel-block"> Resume </a>
-     <a class="panel-block"> Skip </a>
-     <a class="panel-block"> Stop </a>
-     <a class="panel-block"> Volume &#60;volume|volume%|volume dB&#62; </a>
-   </div>
-   <div class="panel panel-primary">
-     <p class="panel-heading"> Poll Commands </p>
-     <a class="panel-block"> Startpoll &#60;choice a&#62;, &#60;choice b&#62;, &#60;choice c&#62;... </a>
-     <a class="panel-block"> Endpoll </a>
-     <a class="panel-block"> Viewpoll </a>
-     <a class="panel-block"> Vote &#60;name of option&#62; </a>
-   </div>
    <table class="table">
     <thead>
       <tr>
@@ -68,8 +25,128 @@
         <td> Returns a random gif matching the tags passed. </td>
       </tr>
       <tr>
-        <td> idle &#60;status&#62; </td>
+        <td> idle [game] </td>
         <td> Sets bot status to idle. </td>
+      </tr>
+      <tr>
+        <td> Image &#60;search query&#62; </td>
+        <td> Gets the top matching image from Google. </td>
+      </tr>
+      <tr>
+        <td> Leet &#60;message&#62; </td>
+        <td> Converts boring regular text to 1337. </td>
+      </tr>
+      <tr>
+        <td> Log &#60;log message&#62; </td>
+        <td> Logs message to bot console. </td>
+      </tr>
+      <tr>
+        <td> Myid </td>
+        <td> Returns the user id of the sender. </td>
+      </tr>
+      <tr>
+        <td> Online [game] </td>
+        <td> Sets bot status to online. </td>
+      </tr>
+      <tr>
+        <td> Ping </td>
+        <td> Pong! </td>
+      </tr>
+      <tr>
+        <td> Rimage &#60;search query&#62; </td>
+        <td> Gets a random image matching tags from Google. </td>
+      </tr>
+      <tr>
+        <td> Roll [# of sides] </td>
+        <td> Roll one die with x sides, or multiple dice using d20 syntax. Default value is 10. </td>
+      </tr>
+      <tr>
+        <td> Say &#60;message&#62; </td>
+        <td> Bot says message. </td>
+      </tr>
+      <tr>
+        <td> Talk &#60;message&#62; </td>
+        <td> Talk directly to the bot. </td>
+      </tr>
+      <tr>
+        <td> Troll &#60;user to troll&#62; </td>
+        <td> Trolls the @mentioned User! </td>
+      </tr>
+      <tr>
+        <td> Twitch &#60;stream&#62; </td>
+        <td> Checks if the given stream is online. </td>
+      </tr>
+      <tr>
+        <td> Uptime </td>
+        <td> Returns the amount of time since the bot started. </td>
+      </tr>
+      <tr>
+        <td> Urban &#60;word&#62; </td>
+        <td> Looks up a word on Urban Dictionary. </td>
+      </tr>
+      <tr>
+        <td> Userid &#60;user to get id of&#62; </td>
+        <td> Returns the unique id of a user. This is useful for permissions. </td>
+      </tr>
+      <tr>
+        <td> Version </td>
+        <td> Returns the git commit this bot is running. </td>
+      </tr>
+      <tr>
+        <td> Wiki &#60;search terms&#62; </td>
+        <td> Returns the summary of the first matching search result from Wikipedia. </td>
+      </tr>
+      <tr>
+        <td> Yesno </td>
+        <td> Returns Yes or No. </td>
+      </tr>
+      <tr>
+        <td> Youtube &#60;video tags&#62; </td>
+        <td> Gets Youtube video matching tags. </td>
+      </tr>
+      <tr>
+        <td> Play &#60;search terms|URL&#62; </td>
+        <td> Plays the given video in the user's voice channel. Supports YouTube and many others: http://rg3.github.io/youtube-dl/supportedsites.html </td>
+      </tr>
+      <tr>
+        <td> Pause </td>
+        <td> Pauses music playback. </td>
+      </tr>
+      <tr>
+        <td> Queue </td>
+        <td> Prints the current music queue for this server. </td>
+      </tr>
+      <tr>
+        <td> Resume </td>
+        <td> Resumes music playback. </td>
+      </tr>
+      <tr>
+        <td> Skip </td>
+        <td> Skips to the next song in the playback queue. </td>
+      </tr>
+      <tr>
+        <td> Stop </td>
+        <td> Disconnects JARVIS from all voice connections. </td>
+      </tr>
+      <tr>
+        <td> Volume &#60;volume|volume%|volume dB&#62; </td>
+        <td> Set music playback volume as a fraction, a percent, or in dB. </td>
+      </tr>
+      <tr>
+        <td> Startpoll &#60;choice a&#62;, &#60;choice b&#62;, &#60;choice c&#62;... </td>
+        <td> Starts a poll. </td>
+      </tr>
+      <tr>
+        <td> Endpoll </td>
+        <td> Ends the current poll. </td>
+      </tr>
+      <tr>
+        <td> Viewpoll </td>
+        <td> Returns the stats for the current poll. </td>
+      </tr>
+      <tr>
+        <td> Vote &#60;name of option&#62; </td>
+        <td> Vote in the current poll. </td>
       </tr>
     </tbody>
    </table>
