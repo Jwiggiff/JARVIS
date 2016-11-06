@@ -38,65 +38,37 @@ function updateFeature() {
 var lastServerCount = 0;
 
 function updateServers() {
-  $.ajax({
-    url: "https://bots.discord.pw/api/bots/236949446091472896/stats",
-    headers: {
-        'Authorization':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxNzQyOTE1NTg0NDk4MDczNjEiLCJyYW5kIjoyMTYsImlhdCI6MTQ3NjY1MDY2NX0.z3krQHAXxpFdinKEiD5sZWed50U6ZEyz8DWMIhLLUEg',
-    },
-    method: 'GET',
-    dataType: 'json',
-    success: function(data){
-      console.log(data);
-      alert(data);
-      var serverCount = data.body.stats[0].server_count;
+  var xmlhttp = new XMLHttpRequest();
+  var url = "./api/json";
+
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          var myArr = JSON.parse(this.responseText);
+          myFunction(myArr);
+      }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+
+  function myFunction(arr) {
+    console.log(arr);
+      var serverCount = arr.server-count;
       if (serverCount <= lastServerCount) {
         return;
       } else {
         lastServerCount = serverCount;
       }
       $("#server-count").html(serverCount);
-    }
-  });
-  $.ajax({
-    type: "GET",
-    url: "https://bots.discord.pw/api/bots/236949446091472896/stats",
-    success: function(data) {
-      console.log(data);
-      alert(data);
-      var serverCount = data.body.stats[0].server_count;
-      if (serverCount <= lastServerCount) {
-        return;
-      } else {
-        lastServerCount = serverCount;
-      }
-      $("#server-count").html(serverCount);
-    }
-  });
-/*
-  $.ajax({
-    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxNzQyOTE1NTg0NDk4MDczNjEiLCJyYW5kIjoyMTYsImlhdCI6MTQ3NjY1MDY2NX0.z3krQHAXxpFdinKEiD5sZWed50U6ZEyz8DWMIhLLUEg'
-  });
-  $.get("https://bots.discord.pw/api/bots/236949446091472896/stats", function(data) {
-    console.log(data);
-    alert(data);
-    var serverCount = data.body.stats[0].server_count;
-    if (serverCount <= lastServerCount) {
-      return;
-    } else {
-      lastServerCount = serverCount;
-    }
-    $("#server-count").html(serverCount);
-  });
-*/
+  }
 }
 
 
 $(document).ready(function() {
   featureDisplay = $("#feature-display");
   featureUnderline = $("<div class='feature-underline'></div>");
-  //new Odometer({el:document.querySelector("#server-count"),value:0});
+  new Odometer({el:document.querySelector("#server-count"),value:0});
   setTimeout(updateFeature, 1000);
   setInterval(updateFeature, 2500);
-  //setTimeout(updateServers,500);
-  //setInterval(updateServers,2500);
+  setTimeout(updateServers,500);
+  setInterval(updateServers,2500);
 });
