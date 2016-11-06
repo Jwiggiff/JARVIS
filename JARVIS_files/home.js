@@ -51,14 +51,13 @@ function updateServers() {
   xmlhttp.send();
 
   function myFunction(arr) {
-    console.log(arr);
-      var serverCount = arr;
-      if (serverCount <= lastServerCount) {
-        return;
-      } else {
-        lastServerCount = serverCount;
-      }
-      $("#server-count").html(serverCount);
+    var serverCount = arr;
+    if (serverCount <= lastServerCount) {
+      return;
+    } else {
+      lastServerCount = serverCount;
+    }
+    $("#server-count").html(serverCount);
   }
 }
 
