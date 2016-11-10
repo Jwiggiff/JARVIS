@@ -720,6 +720,13 @@ bot.on('ready', () => {
 		if(err) {console.log('There was a problem sending server count to bots.discord.pw!\n' + err)}
 		if(res) {console.log('server count successfully sent to bots.discord.pw!')}
 	});
+	superagent
+	.post('https://www.carbonitex.net/discord/data/botdata.php')
+	.send({"key": 'jcool018ab543lfcg1510', "servercount": bot.guilds.array().length})
+	.end(function(err, res){
+		if(err) {console.log('There was a problem sending server count to carbonitex.net!\n' + err)}
+		if(res) {console.log('server count successfully sent to carbonitex.net!')}
+	});
 });
 
 bot.on('guildCreate', () => {
