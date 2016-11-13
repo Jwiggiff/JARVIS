@@ -712,6 +712,7 @@ bot.on('ready', () => {
   bot.user.setStatus("online");
 	bot.user.setGame("JARVIS | jarvis help");
 
+	//send server count to bots.discord.pw
 	superagent
 	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
 	.send({"server_count": bot.guilds.array().length})
@@ -720,6 +721,8 @@ bot.on('ready', () => {
 		if(err) {console.log('There was a problem sending server count to bots.discord.pw!\n' + err)}
 		if(res) {console.log('server count successfully sent to bots.discord.pw!')}
 	});
+
+	//send server count to carbonitex.net/discord/bots
 	superagent
 	.post('https://www.carbonitex.net/discord/data/botdata.php')
 	.send({"key": 'jcool018ab543lfcg1510', "servercount": bot.guilds.array().length})
@@ -727,15 +730,37 @@ bot.on('ready', () => {
 		if(err) {console.log('There was a problem sending server count to carbonitex.net!\n' + err)}
 		if(res) {console.log('server count successfully sent to carbonitex.net!')}
 	});
-	var b = new Buffer(bot.guilds.array().length);
-	var s = b.toString('base64');
+
+	//send server count to jwiggiff.github.io/JARVIS
 	superagent
-	.put('https://api.github.com/repos/jwiggiff/JARVIS/contents/api.json?branch=gh-pages')
+	.get('https://api.github.com/repos/jwiggiff/JARVIS/contents/api.json?branch=gh-pages')
 	.auth('jcool.friedman@gmail.com', token.pass)
-	.send({"message": 'update serverCount', "commiter": {"name": "jwiggiff", "email": "jcool.friedman@gmail.com"}, "content": s, "sha": "9627cfa2fa9c48147b86536ad1d91b5f08d95013"})
 	.end(function(err, res){
-		if(err) {console.log('There was a problem sending server count to jwiggiff.github.io!\n' + err)}
-		if(res) {console.log('server count successfully sent to jwiggiff.github.io!')}
+	  if(err) {console.log('There was a problem getting server count from jwiggiff.github.io!\n' + err + '\n' + res.text); return}
+	  if(res) {
+	    sha = res.body.sha;
+	    console.log('sha is ' + sha);
+
+	    var b = new Buffer('{"serverCount": ' + bot.guilds.array().length + '}');
+	    var s = b.toString('base64');
+	    superagent
+	    .put('https://api.github.com/repos/jwiggiff/JARVIS/contents/api.json?branch=gh-pages')
+	    .auth('jcool.friedman@gmail.com', token.pass)
+	    .send({
+	      "message": 'update serverCount',
+	      "commiter": {
+	        "name": "jwiggiff",
+	        "email": "jcool.friedman@gmail.com"
+	      },
+	      "content": s,
+	      "sha": sha
+	    })
+	    .end(function(err, res){
+	      if(err) {console.log('There was a problem sending server count to jwiggiff.github.io!\n' + err + '\n' + res.text); return}
+	      if(res) {console.log('server count successfully sent to jwiggiff.github.io!')}
+	    });
+
+	  }
 	});
 });
 
