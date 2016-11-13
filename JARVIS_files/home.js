@@ -71,6 +71,6 @@ $(document).ready(function() {
   new Odometer({el:document.querySelector("#server-count"),value:0});
   setTimeout(updateFeature, 1000);
   setInterval(updateFeature, 2500);
-  //setTimeout(updateServers,500);
-  //setInterval(updateServers,2500);
+  setTimeout(updateServers,500);
+  setInterval(updateServers,2500);
 });
