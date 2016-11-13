@@ -727,10 +727,12 @@ bot.on('ready', () => {
 		if(err) {console.log('There was a problem sending server count to carbonitex.net!\n' + err)}
 		if(res) {console.log('server count successfully sent to carbonitex.net!')}
 	});
+	var b = new Buffer(bot.guilds.array().length);
+	var s = b.toString('base64');
 	superagent
 	.put('https://api.github.com/repos/jwiggiff/JARVIS/contents/api.json?branch=gh-pages')
 	.auth('jcool.friedman@gmail.com', token.pass)
-	.send({"message": 'update serverCount', "commiter": {"name": "jwiggiff", "email": "jcool.friedman@gmail.com"}, "content": })
+	.send({"message": 'update serverCount', "commiter": {"name": "jwiggiff", "email": "jcool.friedman@gmail.com"}, "content": s, "sha": "9627cfa2fa9c48147b86536ad1d91b5f08d95013"})
 	.end(function(err, res){
 		if(err) {console.log('There was a problem sending server count to jwiggiff.github.io!\n' + err)}
 		if(res) {console.log('server count successfully sent to jwiggiff.github.io!')}
