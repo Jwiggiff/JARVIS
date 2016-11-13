@@ -39,20 +39,9 @@ var lastServerCount = 0;
 
 
 function updateServers() {
-  var xmlhttp = new XMLHttpRequest();
-  var url = "./api.json";
 
-  xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-          var myArr = JSON.parse(this.responseText);
-          myFunction(myArr);
-      }
-  };
-  xmlhttp.open("GET", url, true);
-  xmlhttp.send();
-
-  function myFunction(arr) {
-    var serverCount = arr.serverCount;
+  $.getJSON('./api.json', function(data) {
+    var serverCount = data.serverCount;
     if (serverCount <= lastServerCount) {
       return;
     } else {
@@ -60,7 +49,7 @@ function updateServers() {
     }
     console.log(serverCount);
     $("#server-count").html(serverCount);
-  }
+  });
 }
 
 
