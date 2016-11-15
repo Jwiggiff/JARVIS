@@ -1,6 +1,10 @@
 # JARVIS
 JARVIS is a Multi-purpose Bot for Discord.
-Created By jcool.friedman(Josh) & Blooper(Noah)
+Created By jcool.friedman(Josh)
+
+Kind of ish somewhat contributors:
+Blooper(Noah)
+
 <a href="http://imgur.com/4rKMqES"><img src="http://i.imgur.com/4rKMqES.png" title="source: imgur.com" /></a>
 
 ##Available Commands:
