@@ -39,8 +39,18 @@ var lastServerCount = 0;
 
 
 function updateServers() {
+  console.log('updating server count...');
 
-  $.getJSON('./api.json', function(data) {
+  $.get("https://raw.githubusercontent.com/jwiggiff/JARVIS/gh-pages/api.json",function(data){
+    var serverCount=data.serverCount;
+    console.log(serverCount);
+    if(serverCount<=lastServerCount){return;}
+    else{lastServerCount=serverCount;}
+    $("#server-count").html(serverCount);
+  });
+
+  /*
+  $.getJSON('https://raw.githubusercontent.com/jwiggiff/JARVIS/gh-pages/api.json', function(data) {
     var serverCount = data.serverCount;
     if (serverCount <= lastServerCount) {
       return;
@@ -50,8 +60,8 @@ function updateServers() {
     console.log(serverCount);
     $("#server-count").html(serverCount);
   });
+  */
 }
-
 
 
 $(document).ready(function() {
@@ -60,6 +70,6 @@ $(document).ready(function() {
   new Odometer({el:document.querySelector("#server-count"),value:0});
   setTimeout(updateFeature, 1000);
   setInterval(updateFeature, 2500);
-  setTimeout(updateServers,500);
-  setInterval(updateServers,2500);
+  setTimeout(updateServers, 500);
+  setInterval(updateServers, 2500);
 });
