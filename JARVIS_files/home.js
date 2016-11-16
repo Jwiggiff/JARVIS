@@ -49,19 +49,6 @@ function updateServers() {
     else{lastServerCount=serverCount;}
     $("#server-count").html(serverCount);
   });
-
-  /*
-  $.getJSON('https://raw.githubusercontent.com/jwiggiff/JARVIS/gh-pages/api.json', function(data) {
-    var serverCount = data.serverCount;
-    if (serverCount <= lastServerCount) {
-      return;
-    } else {
-      lastServerCount = serverCount;
-    }
-    console.log(serverCount);
-    $("#server-count").html(serverCount);
-  });
-  */
 }
 
 

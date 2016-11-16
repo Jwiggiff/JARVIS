@@ -25,7 +25,8 @@ var lastServerCount=0;
 function updateServers(){
 $.get("https://Aethex.xyz/api/stats",function(data){var serverCount=data[data.length- 1].stats.servers;if(serverCount<=lastServerCount){return;}
 else{lastServerCount=serverCount;}
-$("#server-count").html(serverCount);});
+$("#server-count").html(serverCount);
+});
 }
 
 $(document).ready(function(){
