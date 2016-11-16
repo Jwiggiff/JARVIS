@@ -42,8 +42,8 @@ function updateServers() {
   console.log('updating server count...');
 
   $.get("https://raw.githubusercontent.com/jwiggiff/JARVIS/gh-pages/api.json",function(data){
-    var serverCount=data.serverCount;
-    console.log(data);
+    count = JSON.parse(data);
+    var serverCount=count.serverCount;
     console.log(serverCount);
     if(serverCount<=lastServerCount){return;}
     else{lastServerCount=serverCount;}
