@@ -712,7 +712,7 @@ exports.commandCount = function(){
 }
 
 bot.on('ready', () => {
-	bot.user.setAvatar('http://i.imgur.com/l2KqI3Y.png');
+	bot.user.setAvatar('http://i.imgur.com/l2KqI3Y.png?1');
 	package = require('./package.json');
   console.log("Starting " + package.name + " " + package.version + "...\nLogged in! Serving in " + bot.guilds.array().length + " servers");
   require("./plugins.js").init();
