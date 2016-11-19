@@ -344,11 +344,21 @@ var commands = {
     usage: "<command>",
     description: 'Executes arbitrary javascript in the bot process. User must have "eval" permission',
     process: function(bot,msg,suffix) {
-      if(Permissions.checkPermission(msg.author,"eval")){
-        msg.channel.sendMessage( eval(suffix,bot));
-      } else {
-        msg.channel.sendMessage( msg.author + " doesn't have permission to execute eval!");
-      }
+			if(!msg.author.id === "174291558449807361") {
+				msg.channel.sendMessage("You do not have permission to run this command!")
+				return;
+			}
+	    try {
+	      var code = suffix.join(" ");
+	      var evaled = eval(code);
+
+	      if (typeof evaled !== "string")
+	        evaled = require("util").inspect(evaled);
+
+	      message.channel.sendCode("xl", clean(evaled));
+	    } catch(err) {
+	      message.channel.sendMessage(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\`");
+	    }
     }
   },
   "roll": {
@@ -657,6 +667,13 @@ bot.on("presence", function(user,status,gameId) {
 	}
 	}catch(e){}
 });
+
+function clean(text) {
+  if (typeof(text) === "string")
+    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+  else
+      return text;
+}
 
 function get_gif(tags, func) {
         //limit=1 will only return 1 gif
