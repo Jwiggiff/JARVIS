@@ -480,7 +480,7 @@ var commands = {
 			description: "view poll.",
 			process: function(bot,msg,suffix){
 				if (!ActivePoll) {msg.channel.sendMessage('There is no active poll!')}
-				else {msg.channel.sendMessage('Current stats are:\n```\n' + info + '```');}
+				else {msg.channel.sendMessage('Current stats are: \n\`\`\`\n' + info + '\`\`\`');}
 			}
 	},
 	"endpoll": {
