@@ -471,7 +471,7 @@ var commands = {
 					for (var i in poll) {
 						info += i + ' - ' + poll[i] + ' votes\n'
 					}
-					msg.channel.sendMessage("Poll Successfully Created!" + "\n```\n" + info + "```");
+					msg.channel.sendMessage("Poll Successfully Created! \n\`\`\`\n" + info + "\`\`\`");
 					console.log(info);
 				}
 			}
