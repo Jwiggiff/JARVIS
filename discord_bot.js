@@ -351,9 +351,9 @@ var commands = {
       if (typeof evaled !== "string")
         evaled = require("util").inspect(evaled);
 
-      message.channel.sendCode("xl", evaled);
+      msg.channel.sendCode("xl", evaled);
     } catch(err) {
-      message.channel.sendMessage(`\`ERROR\` \`\`\`xl\n${err}\n\`\`\`");
+      msg.channel.sendMessage("Error! \n\`\`\`\n" + err + "\`\`\`");
     }
     }
   },
