@@ -344,8 +344,9 @@ var commands = {
     usage: "<command>",
     description: 'Executes arbitrary javascript in the bot process. User must have "eval" permission',
     process: function(bot,msg,suffix) {
+			let params = msg.split(" ").splice(8);
 			try {
-      var code = suffix.join(" ");
+      var code = params.join(" ");
       var evaled = eval(code);
 
       if (typeof evaled !== "string")
