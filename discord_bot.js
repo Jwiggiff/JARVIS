@@ -345,7 +345,7 @@ var commands = {
     description: 'Executes arbitrary javascript in the bot process. User must have "eval" permission',
     process: function(bot,msg,suffix) {
 			try {
-      var code = params.join(" ");
+      var code = suffix.join(" ");
       var evaled = eval(code);
 
       if (typeof evaled !== "string")
