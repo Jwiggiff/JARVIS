@@ -489,7 +489,7 @@ var commands = {
 				if (!ActivePoll) {
 					msg.channel.sendMessage('There is no poll to end!');
 				} else {
-					msg.channel.sendMessage('The final results are:\n```\n' + info + '```');
+					msg.channel.sendMessage('The final results are: \n\`\`\`\n' + info + '\`\`\`');
 					info = ''
 					poll = ''
 					ActivePoll = false
