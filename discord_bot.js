@@ -1,6 +1,6 @@
 var Discord = require("discord.js");
 var bot = new Discord.Client();
-var token = require('./token.js');
+var tokeen = require('./tokeen.js');
 var fs = require('fs');
 var superagent = require('superagent');
 
@@ -38,7 +38,7 @@ try {
 try {
 	var AuthDetails = require("./auth.json");
 } catch (e){
-	console.log("Please create an auth.json like auth.json.example with a bot token or an email and password.\n"+e.stack);
+	console.log("Please create an auth.json like auth.json.example with a bot tokeen or an email and password.\n"+e.stack);
 	process.exit();
 }
 
@@ -802,7 +802,7 @@ bot.on('ready', () => {
 	//send server count to jwiggiff.github.io/JARVIS
 	superagent
 	.get('https://api.github.com/repos/jwiggiff/JARVIS/contents/api.json?branch=gh-pages')
-	.auth('jcool.friedman@gmail.com', token.pass)
+	.auth('jcool.friedman@gmail.com', tokeen.pass)
 	.end(function(err, res){
 	  if(err) {console.log('There was a problem getting server count from jwiggiff.github.io!\n' + err + '\n' + res.text); return}
 	  if(res) {
@@ -813,7 +813,7 @@ bot.on('ready', () => {
 	    var s = b.toString('base64');
 	    superagent
 	    .put('https://api.github.com/repos/jwiggiff/JARVIS/contents/api.json?branch=gh-pages')
-	    .auth('jcool.friedman@gmail.com', token.pass)
+	    .auth('jcool.friedman@gmail.com', tokeen.pass)
 	    .send({
 	      "message": 'update serverCount',
 	      "commiter": {
@@ -853,7 +853,7 @@ bot.on('guildCreate', () => {
 	var s = b.toString('base64');
 	superagent
 	.put('https://api.github.com/repos/jwiggiff/JARVIS/contents/api.json?branch=gh-pages')
-	.auth('jcool.friedman@gmail.com', token.pass)
+	.auth('jcool.friedman@gmail.com', tokeen.pass)
 	.send({"message": 'update serverCount', "commiter": {"name": "jwiggiff", "email": "jcool.friedman@gmail.com"}, "content": s, "sha": "9627cfa2fa9c48147b86536ad1d91b5f08d95013"})
 	.end(function(err, res){
 		if(err) {console.log('There was a problem sending server count to jwiggiff.github.io!\n' + err)}
@@ -861,4 +861,4 @@ bot.on('guildCreate', () => {
 	});
 });
 
-bot.login(token.token);
+bot.login(tokeen.tokeen);
