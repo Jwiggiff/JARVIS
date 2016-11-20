@@ -129,7 +129,7 @@ var poll = []
 var ActivePoll = false
 
 var antibully = true
-var bullyWords = ["fuck you", "you are a bitch"]
+var bullyWords = ["fuck you", "you are a bitch", "idiot", "faggot", "cunt", "nigger"]
 
 bot.on('warn', (m) => console.log('[warn]', m));
 bot.on('debug', (m) => console.log('[debug]', m));
@@ -524,22 +524,32 @@ var commands = {
 				});
 			}
 	},
-	//sneak peak for what were working on!
-	//"antibully": {
-	//		usage: "<on/off>",
-	//		description: "say no to bullying!",
-	//		process: function(bot,msg,suffix){
-	//			if (suffix == "on") {
-	//				antibully = true
-	//			}
-	//			else if (suffix == "off") {
-	//				antibully = false
-	//			}
-	//			else {
-	//				msg.channel.sendMessage('Invalid Argument!');
-	//			}
-	//		}
-	//},
+	"antibully": {
+			usage: "<on/off>",
+			description: "say no to bullying!",
+			process: function(bot,msg,suffix){
+				if (suffix == " on") {
+					antibully = true
+					msg.channel.sendMessage("antibully has been turned on!");
+				}
+				else if (suffix == " off") {
+					antibully = false
+					msg.channel.sendMessage("antibully has been turned off!");
+				}
+				else {
+					msg.channel.sendMessage('Invalid Argument!');
+				}
+			}
+	},
+}
+
+function antiBully(msg, words) {
+	for(var i in words) {
+		if(msg.content.toLowerCase().indexOf(words[i]) !== -1) {
+			return true;
+		}
+	}
+	return false;
 }
 
 function checkMessageForCommand(msg, isEdit) {
@@ -644,7 +654,17 @@ function checkMessageForCommand(msg, isEdit) {
     }
 }
 
-bot.on("message", msg => checkMessageForCommand(msg, false));
+bot.on("message", msg => {
+	if(antibully){
+		if(antiBully(msg, bullyWords)) {
+			msg.channel.sendMessage("O");
+			msg.channel.sendMessage("Please do not bully others! Help spread this anti-bullying campaign by typing the letter \'O\' whenever you see someone being bullied online!");
+			msg.channel.sendMessage("(to turn this feature off, type \'jarvis antibully off\')")
+			return;
+		}
+	}
+	checkMessageForCommand(msg, false);
+});
 
 bot.on("presence", function(user,status,gameId) {
 	//if(status === "online"){
