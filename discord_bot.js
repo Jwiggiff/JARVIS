@@ -784,8 +784,7 @@ bot.on('guildCreate', () => {
 	});
 	superagent
 	.post('https://www.carbonitex.net/discord/data/botdata.php')
-	.set('key', token.carbonkey)
-	.send({"servercount": bot.guilds.array().length})
+	.send({"key": 'jcool018ab543lfcg1510', "servercount": bot.guilds.array().length})
 	.end(function(err, res){
 		if(err) {console.log('There was a problem sending server count to carbonitex.net!\n' + err)}
 		if(res) {console.log('server count successfully sent to carbonitex.net!')}
