@@ -597,11 +597,15 @@ module.exports = {
 
 function checkMessageForCommand(msg, isEdit) {
 	//check if message is a command
+<<<<<<< HEAD
 	if (msg.content.startsWith("(╯°□°）╯︵ ┻━┻")) {
 	 (msg.channel.sendMessage("┬─┬﻿ ノ( ゜-゜ノ)"));
 }
 //this is the table flip command
 	if(msg.author.id != bot.user.id && (msg.content.startsWith(Config.commandPrefix))){
+=======
+	if(msg.author.id != bot.user.id && (msg.content.toLowerCase().startsWith(Config.commandPrefix))){
+>>>>>>> refs/remotes/origin/master
         console.log("treating " + msg.content + " from " + msg.author.username + "\(" + msg.author + "\) as command");
 		var cmdTxt = msg.content.split(" ")[1];
         var suffix = msg.content.substring(cmdTxt.length+7);//add six for the 'jarvis' and one for the space
@@ -773,8 +777,10 @@ bot.on('ready', () => {
   console.log("Starting " + package.name + " " + package.version + "...\nLogged in! Serving in " + bot.guilds.array().length + " servers");
   require("./plugins.js").init();
   console.log("type "+Config.commandPrefix+"help in Discord for a commands list.");
-  bot.user.setStatus("online", "JARVIS | jarvis help");
+  bot.user.setStatus("online");
+	bot.user.setGame("JARVIS | jarvis help");
 
+	//send server count to bots.discord.pw
 	superagent
 	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
 	.send({"server_count": bot.guilds.array().length})
@@ -782,6 +788,76 @@ bot.on('ready', () => {
 	.end(function(err, res){
 		if(err) {console.log('There was a problem sending server count to bots.discord.pw!\n' + err)}
 		if(res) {console.log('server count successfully sent to bots.discord.pw!')}
+	});
+
+	//send server count to carbonitex.net/discord/bots
+	superagent
+	.post('https://www.carbonitex.net/discord/data/botdata.php')
+	.send({"key": 'jcool018ab543lfcg1510', "servercount": bot.guilds.array().length})
+	.end(function(err, res){
+		if(err) {console.log('There was a problem sending server count to carbonitex.net!\n' + err)}
+		if(res) {console.log('server count successfully sent to carbonitex.net!')}
+	});
+
+	//send server count to jwiggiff.github.io/JARVIS
+	superagent
+	.get('https://api.github.com/repos/jwiggiff/JARVIS/contents/api.json?branch=gh-pages')
+	.auth('jcool.friedman@gmail.com', token.pass)
+	.end(function(err, res){
+	  if(err) {console.log('There was a problem getting server count from jwiggiff.github.io!\n' + err + '\n' + res.text); return}
+	  if(res) {
+	    sha = res.body.sha;
+	    console.log('sha is ' + sha);
+
+	    var b = new Buffer('{"serverCount": ' + bot.guilds.array().length + '}');
+	    var s = b.toString('base64');
+	    superagent
+	    .put('https://api.github.com/repos/jwiggiff/JARVIS/contents/api.json?branch=gh-pages')
+	    .auth('jcool.friedman@gmail.com', token.pass)
+	    .send({
+	      "message": 'update serverCount',
+	      "commiter": {
+	        "name": "jwiggiff",
+	        "email": "jcool.friedman@gmail.com"
+	      },
+	      "content": s,
+	      "sha": sha
+	    })
+	    .end(function(err, res){
+	      if(err) {console.log('There was a problem sending server count to jwiggiff.github.io!\n' + err + '\n' + res.text); return}
+	      if(res) {console.log('server count successfully sent to jwiggiff.github.io!')}
+	    });
+
+	  }
+	});
+});
+
+bot.on('guildCreate', () => {
+	superagent
+	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
+	.send({"server_count": bot.guilds.array().length})
+	.set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxNzQyOTE1NTg0NDk4MDczNjEiLCJyYW5kIjoyMTYsImlhdCI6MTQ3NjY1MDY2NX0.z3krQHAXxpFdinKEiD5sZWed50U6ZEyz8DWMIhLLUEg')
+	.end(function(err, res){
+		if(err) {console.log('There was a problem sending server count to bots.discord.pw!\n' + err)}
+		if(res) {console.log('server count successfully sent to bots.discord.pw!')}
+	});
+	superagent
+	.post('https://www.carbonitex.net/discord/data/botdata.php')
+	.set('key', 'jcool018ab543lfcg1510')
+	.send({"servercount": bot.guilds.array().length})
+	.end(function(err, res){
+		if(err) {console.log('There was a problem sending server count to carbonitex.net!\n' + err)}
+		if(res) {console.log('server count successfully sent to carbonitex.net!')}
+	});
+	var b = new Buffer(bot.guilds.array().length);
+	var s = b.toString('base64');
+	superagent
+	.put('https://api.github.com/repos/jwiggiff/JARVIS/contents/api.json?branch=gh-pages')
+	.auth('jcool.friedman@gmail.com', token.pass)
+	.send({"message": 'update serverCount', "commiter": {"name": "jwiggiff", "email": "jcool.friedman@gmail.com"}, "content": s, "sha": "9627cfa2fa9c48147b86536ad1d91b5f08d95013"})
+	.end(function(err, res){
+		if(err) {console.log('There was a problem sending server count to jwiggiff.github.io!\n' + err)}
+		if(res) {console.log('server count successfully sent to jwiggiff.github.io!')}
 	});
 });
 
