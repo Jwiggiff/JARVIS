@@ -23,6 +23,7 @@ h4 {
 }
 .button-panel {
   text-align: center;
+  margin: 100px;
 }
 .button-panel a {
   background-color: #031727;
