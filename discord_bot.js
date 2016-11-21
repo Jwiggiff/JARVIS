@@ -1,6 +1,7 @@
 var Discord = require("discord.js");
 var bot = new Discord.Client();
 var token = require('./token.js');
+var servers = require('./serverconfigs.json');
 var fs = require('fs');
 var superagent = require('superagent');
 
@@ -529,12 +530,13 @@ var commands = {
 			description: "say no to bullying!",
 			process: function(bot,msg,suffix){
 				if (suffix == " on") {
-					antibully = true
+					servers[msg.guild.name].antibully = true;
 					msg.channel.sendMessage("antibully has been turned on!");
 				}
 				else if (suffix == " off") {
-					antibully = false
+					servers[msg.guild.name].antibully = false;
 					msg.channel.sendMessage("antibully has been turned off!");
+					console.log(servers["JARVIS Official Server"].antibully);
 				}
 				else {
 					msg.channel.sendMessage('Invalid Argument!');
@@ -655,11 +657,9 @@ function checkMessageForCommand(msg, isEdit) {
 }
 
 bot.on("message", msg => {
-	if(antibully){
+	if(servers[msg.guild.name].antibully){
 		if(antiBully(msg, bullyWords)) {
-			msg.channel.sendMessage("O");
-			msg.channel.sendMessage("Please do not bully others! Help spread this anti-bullying campaign by typing the letter \'O\' whenever you see someone being bullied online!");
-			msg.channel.sendMessage("(to turn this feature off, type \'jarvis antibully off\')")
+			msg.channel.sendMessage("O\nPlease do not bully others! Help spread this anti-bullying campaign by typing the letter \'O\' whenever you see someone being bullied online!\n(to turn this feature off, type \'jarvis antibully off\')");
 			return;
 		}
 	}
@@ -732,6 +732,16 @@ exports.commandCount = function(){
 }
 
 bot.on('ready', () => {
+	var servercount = bot.guilds.array();
+	for(var g in servercount){
+		if(servers[servercount[g].name] == undefined){
+			servers[servercount[g].name] = {
+				"antibully": true
+			}
+			fs.writeFile('./serverconfigs.json', JSON.stringify(servers));
+		}
+	}
+	console.log(servers["JARVIS Official Server"].antibully);
 	bot.user.setAvatar('http://i.imgur.com/l2KqI3Y.png?1');
 	package = require('./package.json');
   console.log("Starting " + package.name + " " + package.version + "...\nLogged in! Serving in " + bot.guilds.array().length + " servers");
@@ -739,6 +749,7 @@ bot.on('ready', () => {
   console.log("type "+Config.commandPrefix+"help in Discord for a commands list.");
   bot.user.setStatus("online");
 	bot.user.setGame("JARVIS | jarvis help");
+
 
 	//send server count to bots.discord.pw
 	superagent
@@ -793,6 +804,7 @@ bot.on('ready', () => {
 	});
 });
 
+
 bot.on('guildCreate', () => {
 	superagent
 	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
@@ -841,5 +853,6 @@ bot.on('guildCreate', () => {
 		}
 	});
 });
+
 
 bot.login(token.token);
