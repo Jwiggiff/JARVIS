@@ -525,16 +525,17 @@ var commands = {
 				});
 			}
 	},
+	/* Still working on this (it didn't work)
 	"antibully": {
 			usage: "<on/off>",
 			description: "say no to bullying!",
 			process: function(bot,msg,suffix){
 				if (suffix == " on") {
-					servers[msg.guild.name].antibully = true;
+					servers[(msg.guild.name)].antibully = true;
 					msg.channel.sendMessage("antibully has been turned on!");
 				}
 				else if (suffix == " off") {
-					servers[msg.guild.name].antibully = false;
+					servers[(msg.guild.name)].antibully = false;
 					msg.channel.sendMessage("antibully has been turned off!");
 					console.log(servers["JARVIS Official Server"].antibully);
 				}
@@ -543,8 +544,10 @@ var commands = {
 				}
 			}
 	},
+	*/
 }
 
+/*
 function antiBully(msg, words) {
 	for(var i in words) {
 		if(msg.content.toLowerCase().indexOf(words[i]) !== -1) {
@@ -553,6 +556,7 @@ function antiBully(msg, words) {
 	}
 	return false;
 }
+*/
 
 function checkMessageForCommand(msg, isEdit) {
 	//check if message is a command
@@ -657,12 +661,16 @@ function checkMessageForCommand(msg, isEdit) {
 }
 
 bot.on("message", msg => {
-	if(servers[msg.guild.name].antibully){
-		if(antiBully(msg, bullyWords)) {
-			msg.channel.sendMessage("O\nPlease do not bully others! Help spread this anti-bullying campaign by typing the letter \'O\' whenever you see someone being bullied online!\n(to turn this feature off, type \'jarvis antibully off\')");
-			return;
+	/*
+	if(msg.guild !== undefined){
+		if(servers[(msg.guild.name)].antibully){
+			if(antiBully(msg, bullyWords)) {
+				msg.channel.sendMessage("O\nPlease do not bully others! Help spread this anti-bullying campaign by typing the letter \'O\' whenever you see someone being bullied online!\n(to turn this feature off, type \'jarvis antibully off\')");
+				return;
+			}
 		}
 	}
+	*/
 	checkMessageForCommand(msg, false);
 });
 
