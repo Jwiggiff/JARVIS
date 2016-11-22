@@ -567,7 +567,7 @@ function checkMessageForCommand(msg, isEdit) {
         if(msg.isMentioned(bot.user)){
 			try {
 				cmdTxt = msg.content.split(" ")[1];
-				suffix = msg.content.substring(bot.user.mention().length+cmdTxt.length+7);
+					suffix = msg.content.substring(bot.user.mention().length+cmdTxt.length+7);
 			} catch(e){ //no command
 				msg.channel.sendMessage("Yes?");
 				return;
@@ -653,7 +653,10 @@ function checkMessageForCommand(msg, isEdit) {
         }
 
         if (msg.author != bot.user && msg.isMentioned(bot.user)) {
-                msg.channel.sendMessage(msg.author + ", you called?");
+					var suffix = msg.content.substring(bot.user.toString());//add six for the 'jarvis' and one for the space
+					console.log(suffix);
+								commands["talk"].process(bot,msg,suffix,isEdit);
+                //msg.channel.sendMessage(msg.author + ", you called?");
         } else {
 
 				}
@@ -671,6 +674,9 @@ bot.on("message", msg => {
 		}
 	}
 	*/
+	if(msg.isMentioned(bot.user)){
+
+	}
 	checkMessageForCommand(msg, false);
 });
 
