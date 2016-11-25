@@ -1,10 +1,11 @@
+//Main variables
 var Discord = require("discord.js");
 var bot = new Discord.Client();
 var token = require('./token.js');
 var servers = require('./serverconfigs.json');
 var fs = require('fs');
 var superagent = require('superagent');
-
+//Calling the websites and plugins
 try {
 	var urban = require("urban");
 } catch (e){
@@ -92,7 +93,7 @@ try{
 if(!Config.hasOwnProperty("commandPrefix")){
 	Config.commandPrefix = 'jarvis ';
 }
-
+//Yay more variables!
 var qs = require("querystring");
 
 var d20 = require("d20");
@@ -108,7 +109,7 @@ var giphy_config = {
     "permission": ["NORMAL"]
 };
 
-
+//Spicy memes
 //https://api.imgflip.com/popular_meme_ids
 var meme = {
 	"brace": 61546,
@@ -167,7 +168,7 @@ var commands = {
           const dispatcher = connection.playFile(randomTroll)
         })
         .catch(console.log);
-
+        //the Things that jarvis says when he trolls you
         var texts = {
           0 : "Duuuude That was so Kappa!",
           1 : "LOL",
@@ -557,6 +558,11 @@ function antiBully(msg, words) {
 	return false;
 }
 */
+//LIST OF NEW IDEAS
+/* Google translate
+   Spotify
+	Google search
+	*/
 
 function checkMessageForCommand(msg, isEdit) {
 	//check if message is a command
@@ -764,7 +770,7 @@ bot.on('ready', () => {
   bot.user.setStatus("online");
 	bot.user.setGame("JARVIS | jarvis help");
 
-
+  //WEBSITE STUFF
 	//send server count to bots.discord.pw
 	superagent
 	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
