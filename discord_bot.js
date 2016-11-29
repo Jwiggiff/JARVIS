@@ -674,9 +674,6 @@ bot.on("message", msg => {
 		}
 	}
 	*/
-	if(msg.isMentioned(bot.user)){
-
-	}
 	checkMessageForCommand(msg, false);
 });
 
@@ -748,12 +745,12 @@ exports.commandCount = function(){
 bot.on('ready', () => {
 	var servercount = bot.guilds.array();
 	for(var g in servercount){
-		if(servers[servercount[g].name] == undefined){
-			servers[servercount[g].name] = {
-				"antibully": true
-			}
-			fs.writeFile('./serverconfigs.json', JSON.stringify(servers));
-		}
+	  if(!servers[servercount[g].name]){
+	    servers[servercount[g].name] = {
+	      "antibully": true
+	    }
+	    fs.writeFile('./serverconfigs.json', JSON.stringify(servers));
+	  }
 	}
 	console.log(servers["JARVIS Official Server"].antibully);
 	bot.user.setAvatar('http://i.imgur.com/l2KqI3Y.png?1');
