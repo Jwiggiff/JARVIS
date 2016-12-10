@@ -1,4 +1,3 @@
-
 {
   "name": "JARVIS",
   "version": "4.0.0",
@@ -20,18 +19,19 @@
     "imgflipper": "1.0.x",
     "leet": "^1.2.7",
     "nock": "1.7.x",
+    "node-opus": "",
     "node-wolfram": "0.0.1",
     "npm": "",
+    "opusscript": "",
     "querystring": "0.2.x",
     "sinon": "1.14.x",
+    "speaker": "^0.3.0",
     "tumblr.js": "0.0.x",
     "underscore": "1.8.x",
     "urban": "^0.3.0",
     "wikijs": "0.1.x",
     "yahoo-finance": "0.2.x",
-    "youtube-node": "1.2.x",
-    "opusscript": "",
-    "node-opus": ""
+    "youtube-node": "1.2.x"
   },
   "main": "discord_bot.js"
 }

@@ -6,7 +6,8 @@ exports.commands = [
 	"queue",
 	"pause",
 	"resume",
-	"volume"
+	"volume",
+	"clearqueue"
 ]
 
 let options = false;
@@ -28,6 +29,19 @@ let options = false;
 		// Return the queue.
 		if (!queues[server]) queues[server] = [];
 		return queues[server];
+	}
+
+	/*
+	 * Clears the queue.
+	 *
+	 * @param server The server id.
+	 */
+	function clearQueue(server) {
+		// Check if global queues are enabled.
+		if (GLOBAL_QUEUE) server = '_'; // Change to global queue.
+
+		//Clears the queue
+		if (queues[server]) queues[server] = [];
 	}
 
 	/*
@@ -145,6 +159,16 @@ exports.queue = {
 
 		// Send the queue and status.
 		msg.channel.sendMessage( wrap('Queue (' + queueStatus + '):\n' + text));
+	}
+}
+
+exports.clearqueue = {
+	description: "clears the current music queue for this server",
+	process: function(client, msg, suffix) {
+		//Clears the Queue
+		clearQueue(msg.guild.id);
+
+		msg.channel.sendMessage("The Queue Has Been Cleared!");
 	}
 }
 
