@@ -70,3 +70,4 @@ Created By jcool.friedman(Josh)
 	
 ##Support & Suggestions
 <a href="https://discord.gg/8P2UZW3" class="button is-medium is-success">Official Server</a>
+<a href="https://jwiggiff.github.io/JARVIS" class="button is-medium is-success">Official Website</a>
