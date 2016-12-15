@@ -2,8 +2,6 @@
 JARVIS is a Multi-purpose Bot for Discord.
 Created By jcool.friedman(Josh)
 
-<p>Kind of ish somewhat contributors:<br>Blooper(Noah)</p>
-
 <a href="http://imgur.com/4rKMqES"><img src="http://i.imgur.com/4rKMqES.png" title="source: imgur.com" /></a>
 
 ##Available Commands:
@@ -72,3 +70,4 @@ Created By jcool.friedman(Josh)
 	
 ##Support & Suggestions
 <a href="https://discord.gg/8P2UZW3" class="button is-medium is-success">Official Server</a>
+<a href="https://jwiggiff.github.io/JARVIS" class="button is-medium is-success">Official Website</a>
