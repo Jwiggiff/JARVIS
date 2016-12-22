@@ -1,10 +1,12 @@
+//BEGINNING OF JARVIS:
+//Main variables
 var Discord = require("discord.js");
 var bot = new Discord.Client();
 var token = require('./token.js');
 var servers = require('./serverconfigs.json');
 var fs = require('fs');
 var superagent = require('superagent');
-
+//Calling the websites and plugins
 try {
 	var urban = require("urban");
 } catch (e){
@@ -31,7 +33,7 @@ try {
 	console.log("couldn't load wolfram plugin!\n"+e.stack);
 }
 
-// Get authentication data
+//Get authentication data
 try {
 	var AuthDetails = require("./auth.json");
 } catch (e){
@@ -92,7 +94,7 @@ try{
 if(!Config.hasOwnProperty("commandPrefix")){
 	Config.commandPrefix = 'jarvis ';
 }
-
+//Yay more variables!
 var qs = require("querystring");
 
 var d20 = require("d20");
@@ -108,7 +110,7 @@ var giphy_config = {
     "permission": ["NORMAL"]
 };
 
-
+//Dank may-mays
 //https://api.imgflip.com/popular_meme_ids
 var meme = {
 	"brace": 61546,
@@ -128,23 +130,24 @@ var meme = {
 
 var poll = []
 var ActivePoll = false
-
-var antibully = true
-var bullyWords = ["fuck you", "you are a bitch", "idiot", "faggot", "cunt", "nigger"]
+//Variables for the in progress command
+//var antibully = true
+//var bullyWords = ["fuck you", "you are a bitch", "idiot", "faggot", "cunt", "nigger"]
 
 bot.on('warn', (m) => console.log('[warn]', m));
 bot.on('debug', (m) => console.log('[debug]', m));
-
+//All of the commands are below:
+//Each command starts with the name of itself in quotations
 var commands = {
   "ping": {
-    description: "Pong!",
+    description: "Pongs you",
     process: function(bot, msg, suffix) {
       msg.channel.sendMessage("Pong!");
     }
   },
   "troll": {
     usage: "[user to troll]",
-        description: "Trolls the @mentioned User!",
+        description: "Trolls the @mentioned User",
     process: function(bot, msg, suffix) {
       let victim1 = msg.mentions.users.first();
       let victim = msg.guild.member(victim1);
@@ -153,6 +156,7 @@ var commands = {
         .catch(console.log);
       } else {
         console.log('trolling ' + victim1)
+				//The soundtracks jarvis plays when he trolls you
         var trolls = {
           0 : "./lib/Sounds/Air Horn.mp3",
           1 : "./lib/Sounds/Rick Roll.mp3",
@@ -167,7 +171,7 @@ var commands = {
           const dispatcher = connection.playFile(randomTroll)
         })
         .catch(console.log);
-
+        //The Things that jarvis says when he trolls you
         var texts = {
           0 : "Duuuude That was so Kappa!",
           1 : "LOL",
@@ -182,7 +186,7 @@ var commands = {
     }
   },
   "stop": {
-    description: "Disconnects JARVIS from all voice connections",
+    description: "Disconnects JARVIS from ALL voice connections on the server the command is typed on",
     process: function(bot, msg, suffix) {
       msg.guild.voiceConnection.disconnect()
       console.log('Disconnected!');
@@ -219,14 +223,14 @@ var commands = {
   },
   "youtube": {
       usage: "<video tags>",
-      description: "gets youtube video matching tags",
+      description: "gets youtube video matching the tags stated by the user",
       process: function(bot,msg,suffix){
           youtube_plugin.respond(suffix,msg.channel,bot);
       }
   },
   "say": {
       usage: "<message>",
-      description: "bot says message",
+      description: "bot says message that the sender tells it to",
       process: function(bot,msg,suffix){ msg.channel.sendMessage(suffix);}
   },
   "announce": {
@@ -272,7 +276,7 @@ var commands = {
       }
   },
   "version": {
-      description: "returns the git commit this bot is running",
+      description: "returns the git commit the bot is running",
       process: function(bot,msg,suffix) {
           var commit = require('child_process').spawn('git', ['log','-n','1']);
           commit.stdout.on('data', function(data) {
@@ -361,7 +365,7 @@ var commands = {
   },
   "roll": {
         usage: "[# of sides] or [# of dice]d[# of sides]( + [# of dice]d[# of sides] + ...)",
-        description: "roll one die with x sides, or multiple dice using d20 syntax. Default value is 10",
+        description: "roll one die with x amount ofsides, or multiple dice using d20 syntax. Default value is 10",
         process: function(bot,msg,suffix) {
             if (suffix.split("d").length <= 1) {
                 msg.channel.sendMessage(msg.author + " rolled a " + d20.roll(suffix || "10"));
@@ -458,7 +462,7 @@ var commands = {
   },
 	"startpoll": {
 			usage: "[choice a], [choice b], [choice c]",
-			description: "starts a poll.",
+			description: "starts a poll with the options the user states.",
 			process: function(bot,msg,suffix){
 				if (ActivePoll) {
 					msg.channel.sendMessage('Sorry, There is already an active poll!');
@@ -479,14 +483,14 @@ var commands = {
 			}
 	},
 	"viewpoll": {
-			description: "view poll.",
+			description: "Gives current status of a poll",
 			process: function(bot,msg,suffix){
 				if (!ActivePoll) {msg.channel.sendMessage('There is no active poll!')}
 				else {msg.channel.sendMessage('Current stats are: \n\`\`\`\n' + info + '\`\`\`');}
 			}
 	},
 	"endpoll": {
-			description: "ends poll.",
+			description: "ends a poll.",
 			process: function(bot,msg,suffix){
 				if (!ActivePoll) {
 					msg.channel.sendMessage('There is no poll to end!');
@@ -515,7 +519,7 @@ var commands = {
 			}
 	},
 	"yesno": {
-			description: "say yes or no.",
+			description: "the bot responds yes or no.",
 			process: function(bot,msg,suffix){
 				superagent
 				.get('https://yesno.wtf/api')
@@ -557,6 +561,12 @@ function antiBully(msg, words) {
 	return false;
 }
 */
+//LIST OF NEW IDEAS
+/* Google translate
+   Spotify
+	Google search
+
+	*/
 
 function checkMessageForCommand(msg, isEdit) {
 	//check if message is a command
@@ -761,7 +771,7 @@ bot.on('ready', () => {
   bot.user.setStatus("online");
 	bot.user.setGame("JARVIS | jarvis help");
 
-
+  //WEBSITE STUFF:
 	//send server count to bots.discord.pw
 	superagent
 	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
@@ -815,7 +825,7 @@ bot.on('ready', () => {
 	});
 });
 
-
+//Stuff the bot needs for website ftuff
 bot.on('guildCreate', () => {
 	superagent
 	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
@@ -867,3 +877,4 @@ bot.on('guildCreate', () => {
 
 
 bot.login(token.token);
+//END OF JARVIS.
