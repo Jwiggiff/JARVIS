@@ -761,7 +761,6 @@ bot.on('ready', () => {
   bot.user.setStatus("online");
 	bot.user.setGame("JARVIS | jarvis help");
 
-
 	//send server count to bots.discord.pw
 	superagent
 	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
@@ -815,7 +814,6 @@ bot.on('ready', () => {
 	});
 });
 
-
 bot.on('guildCreate', () => {
 	superagent
 	.post('https://bots.discord.pw/api/bots/236949446091472896/stats')
@@ -836,7 +834,7 @@ bot.on('guildCreate', () => {
 	.get('https://api.github.com/repos/jwiggiff/JARVIS/contents/api.json?ref=gh-pages')
 	.auth('jcool.friedman@gmail.com', token.pass)
 	.end(function(err, res){
-		if(err) {console.log('There was a problem getting server count from jwiggiff.github.io!\n' + err + '\n' + res.text); return}
+		if(err) {console.log('There was a problem getting server count from jwiggiff.github.io!\n' + err); return}
 		if(res) {
 			sha = res.body.sha;
 			console.log('sha is ' + sha);
@@ -857,13 +855,12 @@ bot.on('guildCreate', () => {
 				"sha": sha
 			})
 			.end(function(err, res){
-				if(err) {console.log('There was a problem sending server count to jwiggiff.github.io!\n' + err + '\n' + res.text); return}
+				if(err) {console.log('There was a problem sending server count to jwiggiff.github.io!\n' + err); return}
 				if(res) {console.log('server count successfully sent to jwiggiff.github.io!')}
 			});
 
 		}
 	});
 });
-
 
 bot.login(token.token);
