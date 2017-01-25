@@ -4,16 +4,18 @@ exports.commands = [
 
 var cleverbot = require("cleverbot-node");
 talkbot = new cleverbot;
-cleverbot.prepare(function(){});
+
 
 exports.talk = {
 	usage : "<message>",
 	description : "Talk directly to the bot",
 	process : function(bot,msg, suffix) {
 			var conv = suffix.split(" ");
-			talkbot.write(conv, function (response) {
-				console.log(response);
-				msg.channel.sendMessage(response.message)
-			})
+			cleverbot.prepare(function(){
+				talkbot.write("", function (response) {
+					console.log(response);
+					msg.channel.sendMessage(response.message)
+				})
+			});
 	}
 }
