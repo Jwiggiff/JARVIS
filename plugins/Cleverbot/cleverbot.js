@@ -4,6 +4,7 @@ exports.commands = [
 
 var cleverbot = require("cleverbot-node");
 talkbot = new cleverbot;
+talkbot.configure({botapi: token.cleverKey});
 
 
 exports.talk = {
@@ -12,7 +13,7 @@ exports.talk = {
 	process : function(bot,msg, suffix) {
 			var conv = suffix.split(" ");
 			cleverbot.prepare(function(){
-				talkbot.write("", function (response) {
+				talkbot.write(conv, function (response) {
 					console.log(response);
 					msg.channel.sendMessage(response.message)
 				})
