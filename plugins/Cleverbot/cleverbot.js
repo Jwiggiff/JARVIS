@@ -3,6 +3,7 @@ exports.commands = [
 ]
 
 var cleverbot = require("cleverbot-node");
+var token = require('../../token.js');
 talkbot = new cleverbot;
 talkbot.configure({botapi: token.cleverKey});
 
