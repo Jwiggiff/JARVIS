@@ -468,17 +468,17 @@ var commands = {
 					msg.channel.sendMessage('Sorry, There is already an active poll!');
 				} else {
 					ActivePoll = true
-					info = ''
+					poll2 = ''
 					test1 = ''
 					opts = suffix.split(',');
 					for (var i = 0; i < opts.length; i++) {
 						poll[opts[i]] = 0
 					}
 					for (var i in poll) {
-						info += i + ' - ' + poll[i] + ' votes\n'
+						poll2 += i + ' - ' + poll[i] + ' votes\n'
 					}
-					msg.channel.sendMessage("Poll Successfully Created! \n\`\`\`\n" + info + "\`\`\`");
-					console.log(info);
+					console.log(poll2);
+					msg.channel.sendMessage("Poll Successfully Created! \n\`\`\`\n" + poll2 + "\`\`\`");
 				}
 			}
 	},
@@ -486,7 +486,7 @@ var commands = {
 			description: "Gives current status of a poll",
 			process: function(bot,msg,suffix){
 				if (!ActivePoll) {msg.channel.sendMessage('There is no active poll!')}
-				else {msg.channel.sendMessage('Current stats are: \n\`\`\`\n' + info + '\`\`\`');}
+				else {msg.channel.sendMessage('Current stats are: \n\`\`\`\n' + poll2 + '\`\`\`');}
 			}
 	},
 	"endpoll": {
@@ -495,10 +495,10 @@ var commands = {
 				if (!ActivePoll) {
 					msg.channel.sendMessage('There is no poll to end!');
 				} else {
-					msg.channel.sendMessage('The final results are: \n\`\`\`\n' + info + '\`\`\`');
-					info = ''
-					poll = ''
-					ActivePoll = false
+					msg.channel.sendMessage('The final results are: \n\`\`\`\n' + poll2 + '\`\`\`');
+					poll2 = '';
+					poll = [];
+					ActivePoll = false;
 				}
 			}
 	},
@@ -510,9 +510,9 @@ var commands = {
 					msg.channel.sendMessage('There is no active poll.');
 				} else {
 					poll[suffix] += 1
-					info = ''
+					poll2 = ''
 					for (var i in poll) {
-						info += i + ' - ' + poll[i] + ' votes\n'
+						poll2 += i + ' - ' + poll[i] + ' votes\n'
 					}
 					msg.channel.sendMessage('voted for' + suffix);
 				}
