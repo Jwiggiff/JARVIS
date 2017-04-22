@@ -1,7 +1,7 @@
 //BEGINNING OF JARVIS:
 //Main variables
 var Discord = require("discord.js");
-var bot = new Discord.Client();
+const bot = new Discord.Client();
 var token = require('./token.js');
 var servers = require('./serverconfigs.json');
 var fs = require('fs');
