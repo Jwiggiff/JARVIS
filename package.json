@@ -1,7 +1,7 @@
 {
   "name": "JARVIS",
-  "version": "4.0.0",
-  "description": "A Multi-purpose Discord Bot. Currently under major development.",
+  "version": "8.0.0",
+  "description": "A Multi-purpose Discord Bot.",
   "readme": "README.md",
   "maintainers": [],
   "author": "jcool.friedman",
@@ -10,19 +10,16 @@
     "url": "git+https://github.com/jwiggiff/JARVIS.git"
   },
   "dependencies": {
-    "bufferutil": "^2.0.0",
-    "d20": "^1.4.1",
     "discord.js": "github:hydrabolt/discord.js",
-    "erlpack": "github:hammerandchisel/erlpack",
-    "html-to-text": "^3.2.0",
-    "leet": "^1.3.0",
-    "node-opus": "^0.2.6",
-    "node-wolfram": "0.0.1",
-    "opusscript": "0.0.3",
+    "discord.js-commando": "github:gawdl3y/discord.js-commando",
+    "querystring": "^0.2.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
+    "simple-youtube-api": "^2.1.0",
     "superagent": "^3.5.2",
-    "urban": "^0.3.1",
-    "uws": "^0.14.1",
-    "youtube-node": "^1.3.0"
+    "winston": "^2.3.1",
+    "youtube-node": "^1.3.0",
+    "ytdl-core": "^0.13.1"
   },
-  "main": "discord_bot.js"
+  "main": "discord_bot_NEW.js"
 }
