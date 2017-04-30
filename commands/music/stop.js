@@ -4,6 +4,11 @@ module.exports = class stopCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'stop',
+            aliases: [
+              'stfu',
+              'stahp',
+              'disconnect'
+            ],
             group: 'music',
             memberName: 'stop',
             description: 'Disconnects JARVIS from voice connection on the server',
