@@ -10,7 +10,7 @@ module.exports = class youtubeCommand extends Command {
   constructor(client) {
     super(client, {
       name: 'youtube',
-      group: 'other',
+      group: 'search',
       memberName: 'youtube',
       description: 'gets youtube video matching the tags stated by the user',
       examples: [';youtube'],

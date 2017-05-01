@@ -25,6 +25,8 @@ bot.registry
         ['music', 'Music Commands'],
         ['polls', 'Poll Commands'],
         ['fun', 'Fun Commands'],
+        ['search', 'Search Commands'],
+        ['util', 'Utility Commands'],
         ['other', 'Other Useful Commands']
     ])
     .registerDefaultGroups()
