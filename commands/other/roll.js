@@ -11,7 +11,7 @@ module.exports = class rollCommand extends Command {
       args: [{
         key: 'num',
         prompt: 'How many sides on the die?',
-        type: 'int'
+        type: 'integer'
       }]
     });
   }
