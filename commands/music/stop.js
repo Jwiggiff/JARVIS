@@ -17,6 +17,9 @@ module.exports = class stopCommand extends Command {
     }
 
     run(msg, args) {
+      if(!msg.guild.voiceConnection){
+        return msg.say("I'm not connected to a Voice Channel!");
+      }
       msg.guild.voiceConnection.disconnect()
       console.log('Disconnected!');
       return msg.say("Disconnected!");

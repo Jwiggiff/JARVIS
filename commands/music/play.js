@@ -53,6 +53,7 @@ module.exports = class playCommand extends Command {
         const stream = yt(final_url, {filter: 'audioonly'});
         const dispatcher = connnection.playStream(stream);
         dispatcher.on('end', () => {
+          console.log("dispatcher ended");
           voiceChannel.leave();
         });
         return msg.say("Now Playing " + final_url + " for " + msg.author);
