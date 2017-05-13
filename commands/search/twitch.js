@@ -23,13 +23,13 @@ module.exports = class twitchCommand extends Command {
     function(err,res,body){
       var stream = JSON.parse(body);
       if(stream.stream){
-        msg.channel.sendMessage( suffix
+        msg.channel.send( suffix
           +" is online, playing "
           +stream.stream.game
           +"\n"+stream.stream.channel.status
           +"\n"+stream.stream.preview.large)
       }else{
-        msg.channel.sendMessage( text+" is offline")
+        msg.channel.send( text+" is offline")
       }
     });
   }

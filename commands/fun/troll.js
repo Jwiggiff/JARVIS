@@ -20,7 +20,10 @@ module.exports = class TrollCommand extends Command {
       let { user1 } = args;
       let user = msg.guild.member(user1);
       if (!user.voiceChannel) {
-        return msg.channel.sendMessage('Error: It didn\'t work!\nThe user needs to be connected to a voice channel, Silly Billy! :stuck_out_tongue_winking_eye:');
+        return msg.channel.send('Error: It didn\'t work!\nThe user needs to be connected to a voice channel, Silly Billy! :stuck_out_tongue_winking_eye:');
+      }
+      if(!user.voiceChannel.joinable) {
+        return msg.channel.send('I don\'t have permission to join that Voice Channel!')
       }
       console.log('trolling ' + user)
       //The soundtracks jarvis plays when he trolls you
@@ -51,6 +54,6 @@ module.exports = class TrollCommand extends Command {
         5 : "Reeeeeeeeeemed!"
       }
       var randomText = texts[Math.floor(Math.random() * (5 - 0 + 1) + 0)];
-      return msg.channel.sendMessage(randomText);
+      return msg.channel.send(randomText);
     }
 };
