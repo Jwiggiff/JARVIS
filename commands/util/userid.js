@@ -19,6 +19,6 @@ module.exports = class useridCommand extends Command {
   run(msg, args) {
     const { user } = args;
 
-    msg.channel.sendMessage( "The id of " + user.username + " is " + user.id);
+    msg.channel.send( "The id of " + user.username + " is " + user.id);
   }
 };

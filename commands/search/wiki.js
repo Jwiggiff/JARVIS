@@ -28,14 +28,14 @@ module.exports = class wikiCommand extends Command {
                 var continuation = function() {
                     var paragraph = sumText.shift();
                     if(paragraph){
-                        return msg.channel.sendMessage(paragraph,continuation);
+                        return msg.channel.send(paragraph,continuation);
                     }
                 };
                 continuation();
             });
         });
     },function(err){
-        return msg.channel.sendMessage(err);
+        return msg.channel.send(err);
     });
   }
 };
