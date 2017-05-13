@@ -20,10 +20,11 @@ module.exports = class wikiCommand extends Command {
     const { text } = args;
 
     var query = text;
-    var Wiki = require('wikijs');
-    new Wiki().search(query,1).then(function(data) {
-        new Wiki().page(data.results[0]).then(function(page) {
-            page.summary().then(function(summary) {
+    var Wiki = require("wikijs").default;
+
+    Wiki().search(query, 1).then( data => {
+        Wiki().page(data.results[0]).then(page => {
+            page.summary().then(summary => {
                 var sumText = summary.toString().split('\n');
                 var continuation = function() {
                     var paragraph = sumText.shift();
@@ -34,8 +35,6 @@ module.exports = class wikiCommand extends Command {
                 continuation();
             });
         });
-    },function(err){
-        return msg.channel.send(err);
     });
   }
 };
